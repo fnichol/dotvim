@@ -30,4 +30,11 @@ set title			  " set the terminal title
 
 set visualbell			  " no beeping
 
-set softtabstop=2
+set tabstop=2			  " number of spaces that a <Tab> in the file counts for
+set shiftwidth=2		  " number of spaces to use for each step of (auto)indent
+set expandtab			  " use spaces instead of tabs
+
+set laststatus=2		  " always show status line
+				  " status line info at bottom of screen
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+
