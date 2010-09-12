@@ -5,6 +5,6 @@ set encoding=utf-8                " use UTF-8 everywhere
 
 set guioptions-=T                 " hide toolbar (extreme vim)
 
-set background=light              " background color
+set background=dark               " background color
 
 set lines=40 columns=85           " window dimensions
