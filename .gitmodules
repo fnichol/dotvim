@@ -25,3 +25,6 @@
 [submodule "home/.vim/bundle/vim-ruby-sinatra"]
 	path = home/.vim/bundle/vim-ruby-sinatra
 	url = git://github.com/hallison/vim-ruby-sinatra.git
+[submodule "home/.vim/bundle/bufexplorer"]
+	path = home/.vim/bundle/bufexplorer
+	url = git://github.com/markabe/bufexplorer.git
