@@ -10,3 +10,6 @@
 [submodule "home/.vim/snippets"]
 	path = home/.vim/snippets
 	url = git://github.com/fnichol/snipmate-snippets.git
+[submodule "home/.vim/bundle/delimitMate"]
+	path = home/.vim/bundle/delimitMate
+	url = http://github.com/Raimondi/delimitMate.git
