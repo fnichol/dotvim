@@ -1,0 +1,3 @@
+[submodule "home/.vim/bundle/vim-vividchalk"]
+	path = home/.vim/bundle/vim-vividchalk
+	url = git://github.com/tpope/vim-vividchalk.git

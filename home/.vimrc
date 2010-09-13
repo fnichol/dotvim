@@ -1,3 +1,6 @@
+" load pathogen managed plugins
+call pathogen#runtime_append_all_bundles()
+
 set nocompatible		              " don't make vim vi-compatible (better)
 
 syntax enable			                " turn on syntax highlighting
