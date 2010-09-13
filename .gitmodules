@@ -19,3 +19,9 @@
 [submodule "home/.vim/bundle/vim-fugitive"]
 	path = home/.vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule "home/.vim/bundle/vim-rails"]
+	path = home/.vim/bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "home/.vim/bundle/vim-ruby-sinatra"]
+	path = home/.vim/bundle/vim-ruby-sinatra
+	url = git://github.com/hallison/vim-ruby-sinatra.git
