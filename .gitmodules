@@ -28,3 +28,6 @@
 [submodule "home/.vim/bundle/bufexplorer"]
 	path = home/.vim/bundle/bufexplorer
 	url = git://github.com/markabe/bufexplorer.git
+[submodule "home/.vim/bundle/vim-cucumber"]
+	path = home/.vim/bundle/vim-cucumber
+	url = git://github.com/tpope/vim-cucumber.git
