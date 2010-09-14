@@ -33,6 +33,11 @@ set title			                    " set the terminal title
 
 set visualbell			              " no beeping
 
+set nobackup                       " don't make backup before overwriting file
+set nowritebackup                 " same again
+
+set directory=$HOME/.vim/tmp//,.  " keep swap files in one location"
+
 set tabstop=2			                " number of spaces that a <Tab> in the file 
                                   " counts for
 set shiftwidth=2		              " number of spaces to use for each step of 
