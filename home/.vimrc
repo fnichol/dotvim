@@ -3,6 +3,8 @@ call pathogen#runtime_append_all_bundles()
 
 set nocompatible		              " don't make vim vi-compatible (better)
 
+set modelines=0                   " prevent possible exploits in modelines
+
 syntax enable			                " turn on syntax highlighting
 filetype plugin indent on	        " turn on file type detection
 
@@ -52,6 +54,8 @@ nnoremap <C-j> <C-w>j             " ctrl+j: nav to the window below
 nnoremap <C-k> <C-w>k             " ctrl+k: nav to the window above
 nnoremap <C-l> <C-w>l             " ctrl+l: nav to the right window
 map <leader>w <C-w>v<C-w>l        " opens new vert split and switch over to it
+
+map <F2> :NERDTreeToggle<cr>      " map F2 to NERDTreeToggle (show/hide drawer)
 
 set laststatus=2		              " always show status line
 				                          " status line info at bottom of screen
