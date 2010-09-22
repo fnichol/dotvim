@@ -44,8 +44,22 @@ set shiftwidth=2		              " number of spaces to use for each step of
                                   " (auto)indent
 set expandtab			                " use spaces instead of tabs
 
+set list                          " display unprintable characters
+set listchars=tab:▸\ ,eol:¬       " setting display chars for tab and eol
+
+nnoremap <C-h> <C-w>h             " ctrl+h: nav to left window
+nnoremap <C-j> <C-w>j             " ctrl+j: nav to the window below
+nnoremap <C-k> <C-w>k             " ctrl+k: nav to the window above
+nnoremap <C-l> <C-w>l             " ctrl+l: nav to the right window
+map <leader>w <C-w>v<C-w>l        " opens new vert split and switch over to it
+
 set laststatus=2		              " always show status line
 				                          " status line info at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 colorscheme vividchalk            " set color theme
+
+"
+" = References and Credits =
+" - [[http://stevelosh.com/blog/2010/09/coming-home-to-vim/]]
+"
