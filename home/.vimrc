@@ -44,6 +44,7 @@ set tabstop=2			                " number of spaces that a <Tab> in the file
                                   " counts for
 set shiftwidth=2		              " number of spaces to use for each step of 
                                   " (auto)indent
+set softtabstop=2                 " number of spaces that using <Tab> counts for
 set expandtab			                " use spaces instead of tabs
 
 set list                          " display unprintable characters
@@ -68,4 +69,5 @@ colorscheme vividchalk            " set color theme
 "
 " = References and Credits =
 " - [[http://stevelosh.com/blog/2010/09/coming-home-to-vim/]]
+" - [[http://vimcasts.org/episodes/tabs-and-spaces/]]
 "
