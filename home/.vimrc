@@ -57,6 +57,8 @@ map <leader>w <C-w>v<C-w>l        " opens new vert split and switch over to it
 
 map <F2> :NERDTreeToggle<cr>      " map F2 to NERDTreeToggle (show/hide drawer)
 
+cmap w!! w !sudo tee % >/dev/null " forgot to use sudo for editing?
+
 set laststatus=2		              " always show status line
 				                          " status line info at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
