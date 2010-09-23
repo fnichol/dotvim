@@ -18,8 +18,9 @@ set hidden                        " handle multiple buffers better
 set wildmenu                      " enhanced command line completion
 set wildmode=list:longest         " complete files like a shell
 
-nnoremap / /\v                    " use normal (perl-style) regex formatting
-vnoremap / /\v                    " use normal (perl-style) regex formatting
+" use normal (perl-style) regext formatting
+nnoremap / /\v
+vnoremap / /\v
 set ignorecase                    " case insensitive matching
 set smartcase                     " turns case-sensitive if expression contains
                                   " a capital letter
