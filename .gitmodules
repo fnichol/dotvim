@@ -34,3 +34,6 @@
 [submodule "home/.vim/bundle/creole.vim"]
 	path = home/.vim/bundle/creole.vim
 	url = git://github.com/vim-scripts/creole.vim.git
+[submodule "home/.vim/bundle/gitolite.vim"]
+	path = home/.vim/bundle/gitolite.vim
+	url = git://github.com/tmatilai/gitolite.vim.git
