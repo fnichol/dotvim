@@ -62,7 +62,8 @@ map <leader>w <C-w>v<C-w>l        " opens new vert split and switch over to it
 
 map <F2> :NERDTreeToggle<cr>      " map F2 to NERDTreeToggle (show/hide drawer)
 
-cmap w!! w !sudo tee % >/dev/null " forgot to use sudo for editing?
+" forgot to use sudo for editing?
+cmap w!! w !sudo tee % >/dev/null
 
 set encoding=utf-8                " sets the character encoding used inside Vim
 
