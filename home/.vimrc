@@ -27,7 +27,9 @@ set smartcase                     " turns case-sensitive if expression contains
 set gdefault                      " :substitute flag 'g' is default on
 set incsearch                     " highlight matching as you type
 set hlsearch                      " highlights mactches
-nnoremap <leader><space> :noh<cr> " clear out a search, remove highlighting
+
+" clear out a search, remove highlighting
+nnoremap <leader><space> :noh<cr>
 
 set number                        " display line numbers
 set ruler                         " show cursor position
@@ -54,13 +56,19 @@ set expandtab                     " use spaces instead of tabs
 set list                          " display unprintable characters
 set listchars=tab:▸\ ,eol:¬       " setting display chars for tab and eol
 
-nnoremap <C-h> <C-w>h             " ctrl+h: nav to left window
-nnoremap <C-j> <C-w>j             " ctrl+j: nav to the window below
-nnoremap <C-k> <C-w>k             " ctrl+k: nav to the window above
-nnoremap <C-l> <C-w>l             " ctrl+l: nav to the right window
-map <leader>w <C-w>v<C-w>l        " opens new vert split and switch over to it
+" ctrl+h: nav to left window
+nnoremap <C-h> <C-w>h
+" ctrl+j: nav to the window below
+nnoremap <C-j> <C-w>j
+" ctrl+k: nav to the window above
+nnoremap <C-k> <C-w>k
+" ctrl+l: nav to the right window
+nnoremap <C-l> <C-w>l
+" opens new vert split and switch over to it
+map <leader>w <C-w>v<C-w>l
 
-map <F2> :NERDTreeToggle<cr>      " map F2 to NERDTreeToggle (show/hide drawer)
+" map F2 to NERDTreeToggle (show/hide drawer)
+map <F2> :NERDTreeToggle<cr>
 
 " forgot to use sudo for editing?
 cmap w!! w !sudo tee % >/dev/null
