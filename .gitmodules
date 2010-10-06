@@ -37,3 +37,6 @@
 [submodule "home/.vim/bundle/gitolite.vim"]
 	path = home/.vim/bundle/gitolite.vim
 	url = git://github.com/tmatilai/gitolite.vim.git
+[submodule "home/.vim/bundle/vim-markdown"]
+	path = home/.vim/bundle/vim-markdown
+	url = git://github.com/tpope/vim-markdown.git
