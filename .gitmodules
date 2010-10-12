@@ -43,3 +43,6 @@
 [submodule "home/.vim/bundle/vim-rdoc"]
 	path = home/.vim/bundle/vim-rdoc
 	url = git://github.com/hallison/vim-rdoc.git
+[submodule "home/.vim/bundle/json.vim"]
+	path = home/.vim/bundle/json.vim
+	url = git://github.com/vim-scripts/JSON.vim.git
