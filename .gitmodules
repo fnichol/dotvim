@@ -12,7 +12,7 @@
 	url = git://github.com/fnichol/snipmate-snippets.git
 [submodule "home/.vim/bundle/delimitMate"]
 	path = home/.vim/bundle/delimitMate
-	url = http://github.com/Raimondi/delimitMate.git
+	url = git://github.com/Raimondi/delimitMate.git
 [submodule "home/.vim/bundle/vim-git"]
 	path = home/.vim/bundle/vim-git
 	url = git://github.com/tpope/vim-git.git
