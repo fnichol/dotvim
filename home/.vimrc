@@ -1,4 +1,14 @@
 " load pathogen managed plugins
+try
+  " this throws an E107 error if not on vim 7,
+  " even with a version trap around it.  just
+  " catch it and load vim 6 plugins later.
+  filetype off
+  call pathogen#runtime_append_all_bundles()
+catch /^Vim\%((\a\+)\)\=:E107/
+  " pass
+endtry
+
 call pathogen#runtime_append_all_bundles()
 
 set nocompatible                  " don't make vim vi-compatible (better)
@@ -54,7 +64,9 @@ set softtabstop=2                 " number of spaces that using <Tab> counts for
 set expandtab                     " use spaces instead of tabs
 
 set list                          " display unprintable characters
-set listchars=tab:▸\ ,eol:¬       " setting display chars for tab and eol
+
+" setting display chars for tab and eol
+set listchars=tab:▸\ ,eol:¬
 
 " ctrl+h: nav to left window
 nnoremap <C-h> <C-w>h
@@ -79,10 +91,22 @@ set laststatus=2                  " always show status line
                                   " status line info at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
-colorscheme vividchalk            " set color theme
+set background=dark               " blue on black background sucks
+
+if v:version >= 600
+  " pathogen is not supported here, so colorscheme is found with symlink
+  " in colors/ to bundle/vim-vivdchalk/colors/
+  colorscheme vividchalk            " set color theme
+endif
+
+if v:version >= 700
+  " can be found in colors or in a pathogen bundle
+  colorscheme vividchalk            " set color theme
+endif
 
 "
 " = References and Credits =
 " - [[http://stevelosh.com/blog/2010/09/coming-home-to-vim/]]
 " - [[http://vimcasts.org/episodes/tabs-and-spaces/]]
-"
+" - [[http://github.com/rson/dotfiles/blob/master/vim/vimrc]]]
+
