@@ -1,6 +1,6 @@
 = dotvim =
 == Installation ==
-The easiest way is to use [[homesick|http://rubygems.org/gems/homesick]] to
+The easiest way is to use [[http://rubygems.org/gems/homesick|homesick]] to
 manage this repo. Assuming you have a ruby rubtime installed and git:
 
 {{{
