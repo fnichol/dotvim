@@ -43,7 +43,13 @@ set smartcase                     " turns case-sensitive if expression contains
                                   " a capital letter
 set gdefault                      " :substitute flag 'g' is default on
 set incsearch                     " highlight matching as you type
-set hlsearch                      " highlights mactches
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on                       " turn on syntax highlighting
+  set hlsearch                    " highlights mactches
+endif
 
 " clear out a search, remove highlighting
 nnoremap <leader><space> :noh<cr>
