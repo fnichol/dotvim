@@ -121,4 +121,5 @@ endif
 " - [[http://vimcasts.org/episodes/tabs-and-spaces/]]
 " - [[http://github.com/rson/dotfiles/blob/master/vim/vimrc]]]
 " - [[http://vimcasts.org/episodes/running-vim-within-irb/]]
+" - [[http://rsontech.net/articles/2010/10/12/20/vim-plugin-management]]
 
