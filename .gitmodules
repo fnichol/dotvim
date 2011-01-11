@@ -52,3 +52,6 @@
 [submodule "home/.vim/bundle/vim-surround"]
 	path = home/.vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
+[submodule "home/.vim/bundle/matchit.zip"]
+	path = home/.vim/bundle/matchit.zip
+	url = git://github.com/vim-scripts/matchit.zip.git

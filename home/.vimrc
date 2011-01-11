@@ -123,6 +123,9 @@ if v:version >= 700
   colorscheme vividchalk            " set color theme
 endif
 
+" enable extended % matching for HTML, LaTeX, and many other languages
+runtime macros/matchit.vim
+
 "
 " = References and Credits =
 " - [[http://stevelosh.com/blog/2010/09/coming-home-to-vim/]]
