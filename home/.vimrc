@@ -9,8 +9,6 @@ catch /^Vim\%((\a\+)\)\=:E107/
   " pass
 endtry
 
-call pathogen#runtime_append_all_bundles()
-
 set nocompatible                  " don't make vim vi-compatible (better)
 
 set modelines=0                   " prevent possible exploits in modelines
