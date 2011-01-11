@@ -96,6 +96,14 @@ map <F2> :NERDTreeToggle<cr>
 " forgot to use sudo for editing?
 cmap w!! w !sudo tee % >/dev/null
 
+" Preserve selection after indentation
+vmap > >gv
+vmap < <gv
+
+" Map tab to indent in visual mode
+vmap <Tab> >gv
+vmap <S-Tab> <gv
+
 set encoding=utf-8                " sets the character encoding used inside Vim
 
 set laststatus=2                  " always show status line
