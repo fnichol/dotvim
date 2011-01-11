@@ -15,8 +15,15 @@ set nocompatible                  " don't make vim vi-compatible (better)
 
 set modelines=0                   " prevent possible exploits in modelines
 
-syntax enable                     " turn on syntax highlighting
-filetype plugin indent on         " turn on file type detection
+if has("autocmd")
+  filetype plugin indent on       " turn on file type detection
+  "
+  " Restore cursor position
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+endif
 
 set showcmd                       " display incomplete commands
 set showmode                      " display your current mode
@@ -109,4 +116,5 @@ endif
 " - [[http://stevelosh.com/blog/2010/09/coming-home-to-vim/]]
 " - [[http://vimcasts.org/episodes/tabs-and-spaces/]]
 " - [[http://github.com/rson/dotfiles/blob/master/vim/vimrc]]]
+" - [[http://vimcasts.org/episodes/running-vim-within-irb/]]
 
