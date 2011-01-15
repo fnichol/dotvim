@@ -23,6 +23,9 @@ if has("autocmd")
     \ endif
 endif
 
+" remap leader key too comma
+let mapleader=","
+
 set showcmd                       " display incomplete commands
 set showmode                      " display your current mode
 
