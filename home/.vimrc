@@ -99,6 +99,9 @@ map <F2> :NERDTreeToggle<cr>
 " forgot to use sudo for editing?
 cmap w!! w !sudo tee % >/dev/null
 
+" Strip trailing whitespace on lines
+map <leader>ws :%s/ *$//g<cr><c-o><cr>
+
 " Preserve selection after indentation
 vmap > >gv
 vmap < <gv
