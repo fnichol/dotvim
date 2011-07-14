@@ -104,7 +104,7 @@ map <leader>ws :%s/ *$//g<cr><c-o><cr>
 
 " Format JSON, thanks to:
 " http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/
-map <leader>js :%!python -m json.tool<cr>
+nmap <leader>js :%!python -m json.tool<cr>:%s/ \{4\}/  /<cr>:noh<cr>gg
 
 " Wrap selected lines to 75 char width
 nmap <leader>wl :!fmt -w 75<cr>
