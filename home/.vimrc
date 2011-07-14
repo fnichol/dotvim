@@ -102,6 +102,10 @@ cmap w!! w !sudo tee % >/dev/null
 " Strip trailing whitespace on lines
 map <leader>ws :%s/ *$//g<cr><c-o><cr>
 
+" Format JSON, thanks to:
+" http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/
+map <leader>js :%!python -m json.tool<cr>
+
 " Preserve selection after indentation
 vmap > >gv
 vmap < <gv
