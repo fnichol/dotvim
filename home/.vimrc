@@ -107,7 +107,7 @@ map <leader>ws :%s/ *$//g<cr><c-o><cr>
 map <leader>js :%!python -m json.tool<cr>
 
 " Wrap selected lines to 75 char width
-map <leader>wl :!fmt -w 75<cr>
+nmap <leader>wl :!fmt -w 75<cr>
 
 " Preserve selection after indentation
 vmap > >gv
