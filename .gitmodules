@@ -67,3 +67,6 @@
 [submodule "home/.vim/bundle/command-t"]
 	path = home/.vim/bundle/command-t
 	url = git://git.wincent.com/command-t.git
+[submodule "home/.vim/bundle/tabular.vim"]
+	path = home/.vim/bundle/tabular.vim
+	url = git://github.com/godlygeek/tabular.git
