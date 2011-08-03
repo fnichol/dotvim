@@ -102,6 +102,13 @@ cmap w!! w !sudo tee % >/dev/null
 " Strip trailing whitespace on lines
 map <leader>ws :%s/ *$//g<cr><c-o><cr>
 
+" highlight extra whitespace
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#C75D5D
+" match trailing whitespace (except when typing)
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+
 " Format JSON, thanks to:
 " http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/
 nmap <leader>js :%!python -m json.tool<cr>:%s/ \{4\}/  /<cr>:noh<cr>gg
@@ -149,4 +156,5 @@ runtime macros/matchit.vim
 " - [[http://github.com/rson/dotfiles/blob/master/vim/vimrc]]]
 " - [[http://vimcasts.org/episodes/running-vim-within-irb/]]
 " - [[http://rsontech.net/articles/2010/10/12/20/vim-plugin-management]]
+" - [[http://vim.wikia.com/wiki/Highlight_unwanted_spaces]]
 
