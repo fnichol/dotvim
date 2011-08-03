@@ -104,12 +104,14 @@ cmap w!! w !sudo tee % >/dev/null
 " Strip trailing whitespace on lines
 map <leader>ws :%s/ *$//g<cr><c-o><cr>
 
-" highlight extra whitespace
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#C75D5D
-" match trailing whitespace (except when typing)
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+if v:version >= 700
+  " highlight extra whitespace
+  autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#C75D5D
+  " match trailing whitespace (except when typing)
+  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+endif
 
 " Format JSON, thanks to:
 " http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/
