@@ -72,9 +72,9 @@ set nowritebackup                 " same again
 
 set directory=$HOME/.vim/tmp//,.  " keep swap files in one location"
 
-set tabstop=2                     " number of spaces that a <Tab> in the file 
+set tabstop=2                     " number of spaces that a <Tab> in the file
                                   " counts for
-set shiftwidth=2                  " number of spaces to use for each step of 
+set shiftwidth=2                  " number of spaces to use for each step of
                                   " (auto)indent
 set softtabstop=2                 " number of spaces that using <Tab> counts for
 set expandtab                     " use spaces instead of tabs
