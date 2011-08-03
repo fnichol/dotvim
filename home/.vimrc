@@ -26,6 +26,8 @@ endif
 " remap leader key too comma
 let mapleader=","
 
+set encoding=utf-8                " sets the character encoding used inside Vim
+
 set showcmd                       " display incomplete commands
 set showmode                      " display your current mode
 
@@ -126,8 +128,6 @@ vmap < <gv
 " Map tab to indent in visual mode
 vmap <Tab> >gv
 vmap <S-Tab> <gv
-
-set encoding=utf-8                " sets the character encoding used inside Vim
 
 set laststatus=2                  " always show status line
                                   " status line info at bottom of screen
