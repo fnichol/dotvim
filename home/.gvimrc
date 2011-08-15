@@ -11,3 +11,7 @@ set guioptions-=r                 " don't show right-hand scrollbar ever
 set background=dark               " background color
 
 set lines=40 columns=85           " window dimensions
+
+if has("gui_macvim")
+  set transparency=15
+endif
