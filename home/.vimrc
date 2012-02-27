@@ -3,6 +3,7 @@ try
   " this throws an E107 error if not on vim 7,
   " even with a version trap around it.  just
   " catch it and load vim 6 plugins later.
+  filetype on
   filetype off
   call pathogen#runtime_append_all_bundles()
 catch /^Vim\%((\a\+)\)\=:E107/
