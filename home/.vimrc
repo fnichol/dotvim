@@ -124,6 +124,9 @@ nmap <leader>xml :%!xmllint --format -<cr>
 " Wrap selected lines to 75 char width
 nmap <leader>wl :!fmt -w 75<cr>
 
+" Replace insert pry breakpoint in insert mode
+imap !!p require 'pry' ; binding.pry
+
 " Preserve selection after indentation
 vmap > >gv
 vmap < <gv
