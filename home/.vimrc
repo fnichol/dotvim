@@ -1,15 +1,3 @@
-" load pathogen managed plugins
-try
-  " this throws an E107 error if not on vim 7,
-  " even with a version trap around it.  just
-  " catch it and load vim 6 plugins later.
-  filetype on
-  filetype off
-  call pathogen#runtime_append_all_bundles()
-catch /^Vim\%((\a\+)\)\=:E107/
-  " pass
-endtry
-
 set nocompatible                  " don't make vim vi-compatible (better)
 
 set modelines=0                   " prevent possible exploits in modelines
@@ -105,15 +93,6 @@ cmap w!! w !sudo tee % >/dev/null
 " Strip trailing whitespace on lines
 map <leader>ws :%s/ *$//g<cr><c-o><cr>
 
-if v:version >= 700
-  " highlight extra whitespace
-  autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#C75D5D
-  " match trailing whitespace (except when typing)
-  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-endif
-
 " Format JSON, thanks to:
 " http://blog.realnitro.be/2010/12/20/format-json-in-vim-using-pythons-jsontool-module/
 nmap <leader>js :%!python -m json.tool<cr>:%s/ \{4\}/  /<cr>:noh<cr>gg
@@ -141,13 +120,57 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 
 set background=dark               " blue on black background sucks
 
-if v:version >= 600
+if has("user_commands")
+  " Install vundle if not already installed
+  let VundleInstalled=0
+  let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+  if !filereadable(vundle_readme)
+    echo "Installing Vundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    let VundleInstalled=1
+  endif
+
+  " Load vundle"
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
+
+  Bundle 'altercation/vim-colors-solarized'
+  Bundle 'elzr/vim-json'
+  Bundle 'godlygeek/tabular'
+  Bundle 'kchmck/vim-coffee-script'
+  Bundle 'kien/ctrlp.vim'
+  Bundle 'markabe/bufexplorer'
+  Bundle 'mileszs/ack.vim'
+  Bundle 'Raimondi/delimitMate'
+  Bundle 'scrooloose/nerdtree'
+  Bundle 'tpope/vim-commentary'
+  Bundle 'tpope/vim-fugitive'
+  Bundle 'tpope/vim-git'
+  Bundle 'tpope/vim-markdown'
+  Bundle 'tpope/vim-surround'
+  Bundle 'tpope/vim-vividchalk'
+endif
+
+let vividchalk=expand('~/.vim/bundle/vim-vividchalk/colors/vividchalk.vim')
+
+if v:version >= 700 && filereadable(vividchalk)
+  " highlight extra whitespace
+  autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#C75D5D
+  " match trailing whitespace (except when typing)
+  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+endif
+
+if v:version >= 600 && filereadable(vividchalk)
   " pathogen is not supported here, so colorscheme is found with symlink
   " in colors/ to bundle/vim-vivdchalk/colors/
   colorscheme vividchalk            " set color theme
 endif
 
-if v:version >= 700
+if v:version >= 700 && filereadable(vividchalk)
   " can be found in colors or in a pathogen bundle
   colorscheme vividchalk            " set color theme
 endif
