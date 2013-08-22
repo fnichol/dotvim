@@ -5,3 +5,5 @@ tags
 .VimballRecord
 .netrwhist
 home/.vim/tmp/*.swp
+home/.vim/bundle/*
+!home/.vim/bundle/vim-default-color/
