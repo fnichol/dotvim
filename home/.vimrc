@@ -178,6 +178,9 @@ endif
 " enable extended % matching for HTML, LaTeX, and many other languages
 runtime macros/matchit.vim
 
+" Ctrl-P ignores
+let g:ctrlp_custom_ignore = '\v[\/](tmp|vendor/bundle|\.git)$'
+
 "
 " = References and Credits =
 " - [[http://stevelosh.com/blog/2010/09/coming-home-to-vim/]]
