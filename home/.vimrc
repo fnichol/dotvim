@@ -181,6 +181,9 @@ runtime macros/matchit.vim
 " Ctrl-P ignores
 let g:ctrlp_custom_ignore = '\v[\/](tmp|vendor/bundle|\.git)$'
 
+" Ctrl-P sets its local working directory the directory of the current file
+let g:ctrlp_working_path_mode = 'a'
+
 "
 " = References and Credits =
 " - [[http://stevelosh.com/blog/2010/09/coming-home-to-vim/]]
