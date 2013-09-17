@@ -151,6 +151,7 @@ if has("user_commands")
   Bundle 'tpope/vim-markdown'
   Bundle 'tpope/vim-surround'
   Bundle 'tpope/vim-vividchalk'
+  Bundle 'honza/dockerfile.vim'
 endif
 
 let vividchalk=expand('~/.vim/bundle/vim-vividchalk/colors/vividchalk.vim')
