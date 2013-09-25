@@ -2,16 +2,6 @@ set nocompatible                  " don't make vim vi-compatible (better)
 
 set modelines=0                   " prevent possible exploits in modelines
 
-if has("autocmd")
-  filetype plugin indent on       " turn on file type detection
-  "
-  " Restore cursor position
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-endif
-
 " remap leader key too comma
 let mapleader=","
 
@@ -133,9 +123,11 @@ if has("user_commands")
   endif
 
   " Load vundle"
+  filetype off
   set rtp+=~/.vim/bundle/vundle/
   call vundle#rc()
 
+  Bundle 'gmarik/vundle'
   Bundle 'altercation/vim-colors-solarized'
   Bundle 'elzr/vim-json'
   Bundle 'godlygeek/tabular'
@@ -152,6 +144,17 @@ if has("user_commands")
   Bundle 'tpope/vim-surround'
   Bundle 'tpope/vim-vividchalk'
   Bundle 'honza/dockerfile.vim'
+  Bundle 'slim-template/vim-slim'
+endif
+
+if has("autocmd")
+  filetype plugin indent on       " turn on file type detection
+  "
+  " Restore cursor position
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
 endif
 
 let vividchalk=expand('~/.vim/bundle/vim-vividchalk/colors/vividchalk.vim')
