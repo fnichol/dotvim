@@ -26,13 +26,6 @@ set smartcase                     " turns case-sensitive if expression contains
 set gdefault                      " :substitute flag 'g' is default on
 set incsearch                     " highlight matching as you type
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on                       " turn on syntax highlighting
-  set hlsearch                    " highlights mactches
-endif
-
 " clear out a search, remove highlighting
 nnoremap <leader><space> :noh<cr>
 
@@ -124,7 +117,7 @@ if has("user_commands")
 
   " Load vundle"
   filetype off
-  set rtp+=~/.vim/bundle/vundle/
+  set runtimepath+=~/.vim/bundle/vundle/
   call vundle#rc()
 
   Bundle 'gmarik/vundle'
@@ -145,6 +138,14 @@ if has("user_commands")
   Bundle 'tpope/vim-vividchalk'
   Bundle 'honza/dockerfile.vim'
   Bundle 'slim-template/vim-slim'
+  Bundle 'jnwhiteh/vim-golang'
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on                       " turn on syntax highlighting
+  set hlsearch                    " highlights mactches
 endif
 
 if has("autocmd")
@@ -155,6 +156,13 @@ if has("autocmd")
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
+
+  " Use gofmt on save for go files
+  autocmd FileType go autocmd BufWritePre <buffer> Fmt
+  " Set tab stops to 8 for go files
+  autocmd FileType go setlocal shiftwidth=8 tabstop=8 softtabstop=8
+  " Don't expand tabs to spaces for go files
+  autocmd FileType go setlocal noexpandtab
 endif
 
 let vividchalk=expand('~/.vim/bundle/vim-vividchalk/colors/vividchalk.vim')
