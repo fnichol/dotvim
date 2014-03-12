@@ -120,25 +120,10 @@ if has("user_commands")
   set runtimepath+=~/.vim/bundle/vundle/
   call vundle#rc()
 
-  Bundle 'gmarik/vundle'
-  Bundle 'altercation/vim-colors-solarized'
-  Bundle 'elzr/vim-json'
-  Bundle 'godlygeek/tabular'
-  Bundle 'kchmck/vim-coffee-script'
-  Bundle 'kien/ctrlp.vim'
-  Bundle 'markabe/bufexplorer'
-  Bundle 'mileszs/ack.vim'
-  Bundle 'Raimondi/delimitMate'
-  Bundle 'scrooloose/nerdtree'
-  Bundle 'tpope/vim-commentary'
-  Bundle 'tpope/vim-fugitive'
-  Bundle 'tpope/vim-git'
-  Bundle 'tpope/vim-markdown'
-  Bundle 'tpope/vim-surround'
-  Bundle 'tpope/vim-vividchalk'
-  Bundle 'honza/dockerfile.vim'
-  Bundle 'slim-template/vim-slim'
-  Bundle 'jnwhiteh/vim-golang'
+  " Load bundles
+  if filereadable(expand('~/.vim/vundle.vim'))
+    source ~/.vim/vundle.vim
+  endif
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
