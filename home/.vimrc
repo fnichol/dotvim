@@ -70,9 +70,6 @@ map <leader>w <C-w>v<C-w>l
 " map F2 to NERDTreeToggle (show/hide drawer)
 map <F2> :NERDTreeToggle<cr>
 
-" forgot to use sudo for editing?
-cmap w!! w !sudo tee % >/dev/null
-
 " Strip trailing whitespace on lines
 map <leader>ws :%s/ *$//g<cr><c-o><cr>
 
