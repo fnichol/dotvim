@@ -148,8 +148,8 @@ if has("autocmd")
   autocmd FileType go setlocal noexpandtab
 endif
 
-let theme = 'vividchalk'
-let theme_bundle = expand('~/.vim/bundle/vim-vividchalk/colors/vividchalk.vim')
+let theme = 'base16-tomorrow'
+let theme_bundle = expand('~/.vim/bundle/base16-vim/colors/base16-tomorrow.vim')
 
 let vc_bundle = expand('~/.vim/bundle/vim-vividchalk/colors/vividchalk.vim')
 
