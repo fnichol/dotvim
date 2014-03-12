@@ -105,9 +105,10 @@ set background=dark               " blue on black background sucks
 
 if has("user_commands")
   " Install vundle if not already installed
-  let VundleInstalled=0
-  let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-  if !filereadable(vundle_readme)
+  let VundleInstalled = 0
+
+  " Install Vundle if not installed
+  if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
     echo "Installing Vundle..."
     echo ""
     silent !mkdir -p ~/.vim/bundle
