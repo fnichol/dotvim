@@ -148,26 +148,27 @@ if has("autocmd")
   autocmd FileType go setlocal noexpandtab
 endif
 
-let vividchalk=expand('~/.vim/bundle/vim-vividchalk/colors/vividchalk.vim')
+let theme = 'vividchalk'
+let theme_bundle = expand('~/.vim/bundle/vim-vividchalk/colors/vividchalk.vim')
 
-if v:version >= 700 && filereadable(vividchalk)
+let vc_bundle = expand('~/.vim/bundle/vim-vividchalk/colors/vividchalk.vim')
+
+if v:version >= 600 && filereadable(vc_bundle)
+  " pathogen is not supported here, so colorscheme is found with symlink
+  " in colors/ to bundle/vim-vivdchalk/colors/
+  colorscheme vividchalk            " set color theme
+endif
+
+if v:version >= 700 && filereadable(theme_bundle)
   " highlight extra whitespace
   autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#C75D5D
   " match trailing whitespace (except when typing)
   autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
   autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
   autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-endif
 
-if v:version >= 600 && filereadable(vividchalk)
-  " pathogen is not supported here, so colorscheme is found with symlink
-  " in colors/ to bundle/vim-vivdchalk/colors/
-  colorscheme vividchalk            " set color theme
-endif
-
-if v:version >= 700 && filereadable(vividchalk)
-  " can be found in colors or in a pathogen bundle
-  colorscheme vividchalk            " set color theme
+  " set color theme, can be found in colors or in a bundle
+  execute 'colorscheme ' . theme
 endif
 
 " enable extended % matching for HTML, LaTeX, and many other languages
