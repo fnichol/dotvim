@@ -139,13 +139,6 @@ if has("autocmd")
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
-
-  " Use gofmt on save for go files
-  autocmd FileType go autocmd BufWritePre <buffer> Fmt
-  " Set tab stops to 8 for go files
-  autocmd FileType go setlocal shiftwidth=8 tabstop=8 softtabstop=8
-  " Don't expand tabs to spaces for go files
-  autocmd FileType go setlocal noexpandtab
 endif
 
 let theme = 'base16-tomorrow'
