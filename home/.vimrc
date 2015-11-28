@@ -105,23 +105,25 @@ if has("user_commands")
   let VundleInstalled = 0
 
   " Install Vundle if not installed
-  if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
+  if !filereadable(expand('~/.vim/bundle/Vundle.vim/README.md'))
     echo "Installing Vundle..."
     echo ""
     silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-    let VundleInstalled=1
+    silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    let VundleInstalled = 1
   endif
 
   " Load vundle"
   filetype off
-  set runtimepath+=~/.vim/bundle/vundle/
-  call vundle#rc()
+  set runtimepath+=~/.vim/bundle/Vundle.vim
+  call vundle#begin()
 
   " Load bundles
   if filereadable(expand('~/.vim/vundle.vim'))
     source ~/.vim/vundle.vim
   endif
+
+  call vundle#end()
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
