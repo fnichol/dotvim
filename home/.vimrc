@@ -2,7 +2,7 @@ set nocompatible                  " don't make vim vi-compatible (better)
 
 set modelines=0                   " prevent possible exploits in modelines
 
-" remap leader key too comma
+" remap leader key to comma
 let mapleader=","
 
 set encoding=utf-8                " sets the character encoding used inside Vim
