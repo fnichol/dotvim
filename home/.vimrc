@@ -101,8 +101,8 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 set background=dark               " blue on black background sucks
 
 if has("user_commands")
-  " Install vundle if not already installed
-  let VundleInstalled = 0
+  " Install Vundle if not already installed
+  let InitialVundleInstall = 0
 
   " Install Vundle if not installed
   if !filereadable(expand('~/.vim/bundle/Vundle.vim/README.md'))
@@ -110,20 +110,24 @@ if has("user_commands")
     echo ""
     silent !mkdir -p ~/.vim/bundle
     silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    let VundleInstalled = 1
+    let InitialVundleInstall = 1
   endif
 
-  " Load vundle"
+  " Load Vundle"
   filetype off
   set runtimepath+=~/.vim/bundle/Vundle.vim
   call vundle#begin()
-
-  " Load bundles
-  if filereadable(expand('~/.vim/vundle.vim'))
-    source ~/.vim/vundle.vim
+  if filereadable(expand('~/.vim/plugins.vim'))
+    source ~/.vim/plugins.vim
   endif
-
   call vundle#end()
+
+  " Run :PluginInstall if this is the initial Vundle installation
+  if InitialVundleInstall == 1
+    echo "Running PluginInstall..."
+    echo ""
+    :PluginInstall
+  endif
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
