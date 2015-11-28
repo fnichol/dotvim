@@ -54,7 +54,7 @@ set expandtab                     " use spaces instead of tabs
 set list                          " display unprintable characters
 
 " setting display chars for tab and eol
-set listchars=tab:>\ ,eol:~
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 
 " ctrl+h: nav to left window
 nnoremap <C-h> <C-w>h
