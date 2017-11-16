@@ -67,8 +67,8 @@ nnoremap <C-l> <C-w>l
 " opens new vert split and switch over to it
 map <leader>w <C-w>v<C-w>l
 
-" map F2 to NERDTreeToggle (show/hide drawer)
-map <F2> :NERDTreeToggle<cr>
+" map leader d to NERDTreeToggle (show/hide drawer)
+map <leader>d :NERDTreeToggle<cr>
 
 " Strip trailing whitespace on lines
 map <leader>ws :%s/ *$//g<cr><c-o><cr>
@@ -173,6 +173,9 @@ if v:version >= 700 && filereadable(theme_bundle)
   " set color theme, can be found in colors or in a bundle
   execute 'colorscheme ' . theme
 endif
+
+" close the tree window after opening a file
+let g:NERDTreeQuitOnOpen = 1
 
 " enable extended % matching for HTML, LaTeX, and many other languages
 runtime macros/matchit.vim
