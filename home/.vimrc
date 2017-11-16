@@ -101,32 +101,36 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 set background=dark               " blue on black background sucks
 
 if has("user_commands")
-  " Install Vundle if not already installed
-  let InitialVundleInstall = 0
+  " Install vim-plug if not already installed
+  let InitialPlugInstall = 0
 
-  " Install Vundle if not installed
-  if !filereadable(expand('~/.vim/bundle/Vundle.vim/README.md'))
-    echo "Installing Vundle..."
+  " Install vim-plug if not installed
+  if !filereadable(expand('~/.vim/autoload/plug.vim'))
+    echo "Installing vim-plug..."
     echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    let InitialVundleInstall = 1
+    let tmp = tempname()
+    silent !mkdir -p ~/.vim/autoload
+    try
+      execute "silent !git clone --depth 1 https://github.com/junegunn/vim-plug.git " . tmp
+      execute "silent !cp " . tmp . "/plug.vim ~/.vim/autoload/plug.vim"
+    finally
+      execute "silent !rm -rf " . tmp
+    endtry
+    let InitialPlugInstall = 1
   endif
 
-  " Load Vundle"
-  filetype off
-  set runtimepath+=~/.vim/bundle/Vundle.vim
-  call vundle#begin()
+  " Load vim-plug"
+  call plug#begin()
   if filereadable(expand('~/.vim/plugins.vim'))
     source ~/.vim/plugins.vim
   endif
-  call vundle#end()
+  call plug#end()
 
-  " Run :PluginInstall if this is the initial Vundle installation
-  if InitialVundleInstall == 1
-    echo "Running PluginInstall..."
+  " Run :PlugInstall if this is the initial vim-plug installation
+  if InitialPlugInstall == 1
+    echo "Running PlugInstall..."
     echo ""
-    :PluginInstall
+    :PlugInstall
   endif
 endif
 
@@ -148,13 +152,13 @@ if has("autocmd")
 endif
 
 let theme = 'base16-tomorrow'
-let theme_bundle = expand('~/.vim/bundle/base16-vim/colors/base16-tomorrow.vim')
+let theme_bundle = expand('~/.vim/plugged/base16-vim/colors/base16-tomorrow.vim')
 
-let vc_bundle = expand('~/.vim/bundle/vim-vividchalk/colors/vividchalk.vim')
+let vc_bundle = expand('~/.vim/plugged/vim-vividchalk/colors/vividchalk.vim')
 
 if v:version >= 600 && filereadable(vc_bundle)
   " pathogen is not supported here, so colorscheme is found with symlink
-  " in colors/ to bundle/vim-vivdchalk/colors/
+  " in colors/ to plugged/vim-vivdchalk/colors/
   colorscheme vividchalk            " set color theme
 endif
 
