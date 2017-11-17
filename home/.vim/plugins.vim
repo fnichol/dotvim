@@ -1,7 +1,7 @@
 Plug 'altercation/vim-colors-solarized'
 Plug 'chriskempson/base16-vim'
 Plug 'elzr/vim-json'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'markabe/bufexplorer'
 Plug 'mileszs/ack.vim'
 Plug 'Raimondi/delimitMate'
