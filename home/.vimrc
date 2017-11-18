@@ -130,7 +130,7 @@ if has("user_commands")
   if InitialPlugInstall == 1
     echo "Running PlugInstall..."
     echo ""
-    :PlugInstall
+    :PlugInstall --sync | source $MYVIMRC
   endif
 endif
 
