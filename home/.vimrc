@@ -100,35 +100,42 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 
 set background=dark               " blue on black background sucks
 
-if has("user_commands")
-  " Install vim-plug if not already installed
-  let InitialPlugInstall = 0
+let s:theme = 'base16-tomorrow'   " Color scheme to set
 
-  " Install vim-plug if not installed
-  if !filereadable(expand('~/.vim/autoload/plug.vim'))
-    echo "Installing vim-plug..."
-    echo ""
-    let tmp = tempname()
+function! s:InstallPluginManager()
+  let plug_src = "https://github.com/junegunn/vim-plug.git"
+
+  echo "Installing plugin manager..."
+  echo ""
+  let tmpdir = tempname()
+  try
     silent !mkdir -p ~/.vim/autoload
-    try
-      execute "silent !git clone --depth 1 https://github.com/junegunn/vim-plug.git " . tmp
-      execute "silent !cp " . tmp . "/plug.vim ~/.vim/autoload/plug.vim"
-    finally
-      execute "silent !rm -rf " . tmp
-    endtry
-    let InitialPlugInstall = 1
+    execute "silent !git clone --depth 1 " . plug_src . " " . tmpdir
+    execute "silent !mv " . tmpdir . "/plug.vim ~/.vim/autoload/plug.vim"
+  finally
+    execute "silent !rm -rf " . tmpdir
+  endtry
+endfunction
+
+if has("user_commands") && v:version >= 700 && executable('git')
+  " Install plugin manager if not installed
+  if filereadable(expand('~/.vim/autoload/plug.vim'))
+    let s:initial_manager_install = 0
+  else
+    call s:InstallPluginManager()
+    let s:initial_manager_install = 1
   endif
 
-  " Load vim-plug"
+  " Load plugins
   call plug#begin()
   if filereadable(expand('~/.vim/plugins.vim'))
     source ~/.vim/plugins.vim
   endif
   call plug#end()
 
-  " Run :PlugInstall if this is the initial vim-plug installation
-  if InitialPlugInstall == 1
-    echo "Running PlugInstall..."
+  " Install plugins if this is the initial installation
+  if s:initial_manager_install == 1
+    echo "Installing plugins..."
     echo ""
     :PlugInstall --sync | source $MYVIMRC
   endif
@@ -137,7 +144,7 @@ endif
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-  syntax on                       " turn on syntax highlighting
+  syntax enable                   " turn on syntax highlighting
   set hlsearch                    " highlights mactches
 endif
 
@@ -151,18 +158,7 @@ if has("autocmd")
     \ endif
 endif
 
-let theme = 'base16-tomorrow'
-let theme_bundle = expand('~/.vim/plugged/base16-vim/colors/base16-tomorrow.vim')
-
-let vc_bundle = expand('~/.vim/plugged/vim-vividchalk/colors/vividchalk.vim')
-
-if v:version >= 600 && filereadable(vc_bundle)
-  " pathogen is not supported here, so colorscheme is found with symlink
-  " in colors/ to plugged/vim-vivdchalk/colors/
-  colorscheme vividchalk            " set color theme
-endif
-
-if v:version >= 700 && filereadable(theme_bundle)
+if exists('g:plugs')
   " highlight extra whitespace
   autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#C75D5D
   " match trailing whitespace (except when typing)
@@ -171,7 +167,18 @@ if v:version >= 700 && filereadable(theme_bundle)
   autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
   " set color theme, can be found in colors or in a bundle
-  execute 'colorscheme ' . theme
+  execute 'colorscheme ' . s:theme
+elseif v:version >= 600
+      \ && filereadable(resolve(expand('~/.vim/colors/vividchalk.vim')))
+  " plugin managers not supported here, so colorscheme is found with symlink
+  " in colors/ to an installed theme
+  colorscheme vividchalk            " set color theme
+endif
+
+" The remaining configuration is for loaded plugins, so if the plugin manager
+" isn't loaded, exit early
+if !exists('g:plugs')
+  finish
 endif
 
 " close the tree window after opening a file
