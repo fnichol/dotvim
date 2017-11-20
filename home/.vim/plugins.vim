@@ -19,3 +19,6 @@ Plug 'PProvost/vim-ps1'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'powerman/vim-plugin-AnsiEsc'
+
+" Lazily install & load the YouCompleteMe plugin
+source ~/.vim/youcompleteme.vim
