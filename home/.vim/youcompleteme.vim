@@ -20,25 +20,27 @@
 " and RAM, etc. To load the plugin, a command called `:YcmLoad` is registered
 " which will load the plugin into Vim and leave your session ready to go.
 
-let g:ycm_name = 'YouCompleteMe'
-let g:ycm_repo = 'Valloric/' . g:ycm_name
+let s:ycm_name = 'YouCompleteMe'
+let s:ycm_repo = 'Valloric/' . s:ycm_name
 
 function! s:ycm_install()
   if !executable('cmake')
     echohl ErrorMsg
-    echo '[' . g:ycm_name . ' install] ' .
+    echo '[' . s:ycm_name . ' install] ' .
           \ 'cmake not found which is required. Please install and retry.'
     echohl None
     return 1
   endif
 
   " Register the plugin
-  call plug#(g:ycm_repo, { 'do': function('YcmPostinstall'), 'on': 'YcmLoad' })
+  call plug#(s:ycm_repo, { 'do': function('YcmPostinstall'), 'on': 'YcmLoad' })
   " Install the plugin and run the post-installation
-  execute 'PlugInstall ' . g:ycm_name
+  execute 'PlugInstall ' . s:ycm_name
 endfunction
 
 function! YcmPostinstall(info)
+  let name = 'YouCompleteMe'
+
   " Determine the language support based on what is present on the system
   let flags = []
   if executable('clang')
@@ -58,7 +60,7 @@ function! YcmPostinstall(info)
   endif
   if !executable('tsserver')
     echohl WarningMsg
-    echom '[' . g:ycm_name . ' install] ' .
+    echom '[' . name . ' install] ' .
           \ 'TypeScript not enabled, to add run: `npm install -g typescript`'
     echohl None
   endif
@@ -69,22 +71,22 @@ function! YcmPostinstall(info)
   command! -nargs=0 -bar YcmLoad call s:ycm_load()
   " De-register the `:YcmInstall` command
   delcommand YcmInstall
-  echom '[' . g:ycm_name . ' install] Installation complete, ' .
-        \ 'to load now or in the future, run `:YcmLoad`.'
+  echom '[' . name . ' install] ' .
+        \ 'Installation complete, to load now or in the future, run `:YcmLoad`.'
 endfunction
 
 function! s:ycm_load()
   " De-register the `:YcmLoad` command
   delcommand YcmLoad
   " Load the plugin
-  call plug#load(g:ycm_name)
-  echom 'Loaded ' . g:ycm_name . '.'
+  call plug#load(s:ycm_name)
+  echom 'Loaded ' . s:ycm_name . '.'
 endfunction
 
 " If the YouCompleteMe plugin directory exists, assume that it is setup and
 " register (but don't load) the plugin.
-if isdirectory(expand(g:plug_home . "/" . g:ycm_name))
-  Plug g:ycm_repo, { 'on': 'YcmLoad' }
+if isdirectory(expand(g:plug_home . "/" . s:ycm_name))
+  execute 'Plug ''' . s:ycm_repo . ''', { ''on'': ''YcmLoad'' }'
 
   " Register the `:YcmLoad` command to load the plugin for use only when
   " explicitly asked for
