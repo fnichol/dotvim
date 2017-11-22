@@ -1,3 +1,9 @@
+" removes all vimrc autocommands to avoid autocmds appearing twice when vimrc
+" is sourced twice
+augroup vimrc
+  autocmd!
+augroup END
+
 set nocompatible                  " don't make vim vi-compatible (better)
 
 set modelines=0                   " prevent possible exploits in modelines
@@ -152,7 +158,7 @@ if has("autocmd")
   filetype plugin indent on       " turn on file type detection
   "
   " Restore cursor position
-  autocmd BufReadPost *
+  autocmd vimrc BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
@@ -160,11 +166,12 @@ endif
 
 if exists('g:plugs')
   " highlight extra whitespace
-  autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#C75D5D
+  autocmd vimrc ColorScheme * highlight ExtraWhitespace
+        \ ctermbg=darkred guibg=#C75D5D
   " match trailing whitespace (except when typing)
-  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+  autocmd vimrc BufWinEnter * match ExtraWhitespace /\s\+$/
+  autocmd vimrc InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  autocmd vimrc InsertLeave * match ExtraWhitespace /\s\+$/
 
   " set color theme, can be found in colors or in a bundle
   execute 'colorscheme ' . s:theme
