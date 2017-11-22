@@ -211,4 +211,7 @@ autocmd vimrc FileType rust call FileTypeRust()
 " - [[http://vimcasts.org/episodes/running-vim-within-irb/]]
 " - [[http://rsontech.net/articles/2010/10/12/20/vim-plugin-management]]
 " - [[http://vim.wikia.com/wiki/Highlight_unwanted_spaces]]
+" - [[https://github.com/booyaa/rustlangserver.github.io]]
+" - [[https://github.com/leafgarland/vimfiles/blob/master/.vimrc]]
+" - [[http://seenaburns.com/vim-setup-for-rust/]]
 
