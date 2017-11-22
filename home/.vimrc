@@ -100,7 +100,7 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 
 set background=dark               " blue on black background sucks
 
-let s:theme = 'base16-tomorrow'   " Color scheme to set
+let s:theme = 'base16-twilight'   " Color scheme to set
 
 function! s:InstallPluginManager()
   let plug_src = "https://github.com/junegunn/vim-plug.git"
