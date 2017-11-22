@@ -8,7 +8,7 @@
 "
 " ## Installation
 "
-" To install the plugin, a command called `:YcmInstall` is registered which
+" To install the plugin, a command called `:InstallYcm` is registered which
 " will register the plugin, perform the installation (i.e. the Git clone and
 " submodule clones), and execute the `./install.py` post-installation program
 " with flags computed by checking for language support locally installed.
@@ -23,7 +23,7 @@
 let s:ycm_name = 'YouCompleteMe'
 let s:ycm_repo = 'Valloric/' . s:ycm_name
 
-function! s:ycm_install()
+function! s:install_ycm()
   if !executable('cmake')
     echohl ErrorMsg
     echo '[' . s:ycm_name . ' install] ' .
@@ -69,8 +69,8 @@ function! YcmPostinstall(info)
   execute "!./install.py " . join(flags)
   " Register the `:YcmLoad` command
   command! -nargs=0 -bar YcmLoad call s:ycm_load()
-  " De-register the `:YcmInstall` command
-  delcommand YcmInstall
+  " De-register the `:InstallYcm` command
+  delcommand InstallYcm
   echom '[' . name . ' install] ' .
         \ 'Installation complete, to load now or in the future, run `:YcmLoad`.'
 endfunction
@@ -92,8 +92,8 @@ if isdirectory(expand(g:plug_home . "/" . s:ycm_name))
   " explicitly asked for
   command! -nargs=0 -bar YcmLoad call s:ycm_load()
 else
-  " If the plugin directory doesn't exist, then register the `:YcmInstall`
+  " If the plugin directory doesn't exist, then register the `:InstallYcm`
   " command which will only register and install (but not load) the plugin
   " when explicitly asked for
-  command! -nargs=0 -bar YcmInstall call s:ycm_install()
+  command! -nargs=0 -bar InstallYcm call s:install_ycm()
 endif
