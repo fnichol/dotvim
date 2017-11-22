@@ -200,10 +200,8 @@ let g:ctrlp_custom_ignore = '\v[\/](tmp|vendor/bundle|\.git)$'
 " Ctrl-P sets its local working directory the directory of the current file
 let g:ctrlp_working_path_mode = 'a'
 
-" Runs rustfmt on buffer write, if rustfmt exists in $PATH
-if executable('rustfmt')
-  let g:rustfmt_autosave = 1
-endif
+source ~/.vim/rust.vim
+autocmd vimrc FileType rust call FileTypeRust()
 
 "
 " = References and Credits =
