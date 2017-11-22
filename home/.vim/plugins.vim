@@ -20,5 +20,11 @@ Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'powerman/vim-plugin-AnsiEsc'
 
+" Generic Language Server Protocol (LSP) support
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
 " Lazily install & load the YouCompleteMe plugin
 source ~/.vim/youcompleteme.vim
