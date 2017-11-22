@@ -173,8 +173,17 @@ if exists('g:plugs')
   autocmd vimrc InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
   autocmd vimrc InsertLeave * match ExtraWhitespace /\s\+$/
 
-  " set color theme, can be found in colors or in a bundle
-  execute 'colorscheme ' . s:theme
+  " If base16-shell is in use, then read colors from '~/.vimrc_background`
+  " which has corrected colors for a 256-color theme variant
+  if exists('$BASE16_THEME')
+        \ && filereadable(expand('~/.base16_theme'))
+        \ && filereadable(expand('~/.vimrc_background'))
+    let base16colorspace=256
+    source ~/.vimrc_background
+  else
+    " set color theme, can be found in colors or in a bundle
+    execute 'colorscheme ' . s:theme
+  endif
 elseif v:version >= 600
       \ && filereadable(resolve(expand('~/.vim/colors/vividchalk.vim')))
   " plugin managers not supported here, so colorscheme is found with symlink
