@@ -212,6 +212,11 @@ let g:ctrlp_working_path_mode = 'a'
 source ~/.vim/rust.vim
 autocmd vimrc FileType rust call FileTypeRust()
 
+" Clear the background color in Termite to get transparent background
+if &term == "xterm-termite"
+  highlight Normal ctermbg=NONE
+endif
+
 "
 " = References and Credits =
 " - [[http://stevelosh.com/blog/2010/09/coming-home-to-vim/]]
