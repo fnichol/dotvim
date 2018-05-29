@@ -213,7 +213,7 @@ source ~/.vim/rust.vim
 autocmd vimrc FileType rust call FileTypeRust()
 
 " Clear the background color in Termite to get transparent background
-if &term == "xterm-termite"
+if &term == "xterm-termite" || &term == "screen-256color"
   highlight Normal ctermbg=NONE
 endif
 
