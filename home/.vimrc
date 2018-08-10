@@ -212,6 +212,10 @@ let g:ctrlp_working_path_mode = 'a'
 source ~/.vim/rust.vim
 autocmd vimrc FileType rust call FileTypeRust()
 
+" Enable a bit more syntax highlighting for Go code
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+
 " Clear the background color in Termite to get transparent background
 if &term == "xterm-termite" || &term == "screen-256color"
   highlight Normal ctermbg=NONE
