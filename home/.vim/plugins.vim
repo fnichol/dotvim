@@ -21,6 +21,7 @@ Plug 'cespare/vim-toml'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'uarun/vim-protobuf'
 
 " Generic Language Server Protocol (LSP) support
 Plug 'prabirshrestha/async.vim'
