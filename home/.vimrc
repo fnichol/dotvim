@@ -182,6 +182,7 @@ if exists('g:plugs')
     source ~/.vimrc_background
   else
     " set color theme, can be found in colors or in a bundle
+    let base16colorspace=256
     execute 'colorscheme ' . s:theme
   endif
 elseif v:version >= 600
@@ -216,8 +217,9 @@ autocmd vimrc FileType rust call FileTypeRust()
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 
-" Clear the background color in Termite to get transparent background
-if &term == "xterm-termite" || &term == "screen-256color"
+" Clear the background color in Termite or a 256 color term to get transparent
+" background
+if &term == "xterm-termite" || match(&term, "-256color$")
   highlight Normal ctermbg=NONE
 endif
 
