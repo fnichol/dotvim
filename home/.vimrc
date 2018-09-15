@@ -199,6 +199,43 @@ elseif v:version >= 600
   colorscheme vividchalk            " set color theme
 endif
 
+" Toggle spellchecking on and off
+function! ToggleSpellCheck()
+  set spell!
+  if &spell
+    echo 'Spellcheck on'
+  else
+    echo 'Spellcheck off'
+  endif
+endfunction
+" Map leader s to toggle spell checking on and off
+map <leader>s :call ToggleSpellCheck()<CR>
+
+" Set spellchecking languages to be used in priority order
+set spelllang=en_us,en_ca
+
+" Enable spell checking by default
+set spell
+
+" Customize the display of words not recognized by the spellchecker
+highlight clear SpellBad
+highlight SpellBad
+      \ term=underline,italic cterm=underline,italic gui=underline,italic
+" Customize the display of words that should be capitalized
+highlight clear SpellCap
+highlight SpellCap
+      \ term=italic cterm=italic gui=italic
+" Customize the display of words that are recognized by the spellchecker as
+" rare (i.e. hardly ever used)
+highlight clear SpellRare
+highlight SpellRare
+      \ term=underline,italic cterm=underline,italic gui=underline,italic
+highlight clear SpellLocal
+" Customize the display of words that are recognized by the spellchecker that
+" are used in another region
+highlight SpellLocal
+      \ term=underline cterm=underline gui=underline
+
 " The remaining configuration is for loaded plugins, so if the plugin manager
 " isn't loaded, exit early
 if !exists('g:plugs')
