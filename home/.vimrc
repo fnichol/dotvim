@@ -181,8 +181,15 @@ if exists('g:plugs')
     let base16colorspace=256
     source ~/.vimrc_background
   else
-    " set color theme, can be found in colors or in a bundle
-    let base16colorspace=256
+    if has('mac') && match(&term, "-256color$") != -1
+      " Set termguicolors if running on macOS in a 256 color term
+      set termguicolors
+    elseif !has('mac')
+      " Set base16colorspace if not running on macOS
+      let base16colorspace=256
+    endif
+
+    " Set color theme, can be found in colors or in a bundle
     execute 'colorscheme ' . s:theme
   endif
 elseif v:version >= 600
@@ -219,7 +226,7 @@ let g:go_highlight_fields = 1
 
 " Clear the background color in Termite or a 256 color term to get transparent
 " background
-if &term == "xterm-termite" || match(&term, "-256color$")
+if &term == "xterm-termite" || match(&term, "-256color$") != -1
   highlight Normal ctermbg=NONE
 endif
 
