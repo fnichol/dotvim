@@ -8,7 +8,7 @@ function! FileTypeRust()
   endif
 endfunction
 
-function s:rustup_installed(component)
+function! s:rustup_installed(component)
   let l:matches = systemlist('rustup component list | ' .
         \ ' grep -E "\((default|installed)\)$" | ' .
         \ ' grep "^' . a:component . '"')
@@ -19,7 +19,7 @@ function s:rustup_installed(component)
   endif
 endfunction
 
-function s:rls_installed()
+function! s:rls_installed()
   for component in s:rls_components
     if !s:rustup_installed(component)
       return 0
