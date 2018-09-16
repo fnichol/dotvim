@@ -6,6 +6,11 @@ function! FileTypeRust()
   if s:rustup_installed(s:rustfmt_component)
     let g:rustfmt_autosave = 1
   endif
+
+  " Set Cargo as the default ALE linter, if the `cargo` binary is present
+  if executable('cargo')
+    let g:ale_linters['rust'] = ['cargo']
+  endif
 endfunction
 
 function! s:rustup_installed(component)
@@ -99,6 +104,9 @@ function! s:rls_enable()
         \ 'whitelist': ['rust']
         \ })
   delcommand RlsEnable
+
+  " Set RLS as the ALE linter for Rust
+  let g:ale_linters['rust'] = ['rls']
 endfunction
 
 function! s:cargo_nightly_install(name)

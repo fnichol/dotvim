@@ -242,6 +242,21 @@ if !exists('g:plugs')
   finish
 endif
 
+" ALE linter configuration
+
+" Map leader a to manually run ALE lint
+map <leader>a :ALELint<CR>
+
+" Disable all highlighting of warnings and errors
+let g:ale_set_highlights = 0
+
+" Disable all other automatic linting runs and rely on the manual linting
+" exclusively instead
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 0
+let g:ale_lint_on_filtype_changed = 0
+
 " close the tree window after opening a file
 let g:NERDTreeQuitOnOpen = 1
 
