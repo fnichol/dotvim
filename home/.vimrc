@@ -199,6 +199,8 @@ elseif v:version >= 600
   colorscheme vividchalk            " set color theme
 endif
 
+" Spelling
+
 " Toggle spellchecking on and off
 function! ToggleSpellCheck()
   set spell!
@@ -256,6 +258,28 @@ let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 0
 let g:ale_lint_on_filtype_changed = 0
+
+" asyncomplete
+
+" `Tab` key press calls `Ctrl+n` only if the completion window is visible
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" `Shift+Tab` key press calls `Ctrl+n` only if the completion window is
+" visible
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" `Retrun` key press calls `Ctrl+y` only if the completion window is visible
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
+" Auto-close the preview window when completion is done
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+imap <C-space> <Plug>(asyncomplete_force_refresh)
+
+" Language Server Protocol
+
+" Map `Ctrl+i` to hover
+map <C-i> :LspHover<cr>
+" Map `g] to go to definition
+nnoremap g] :LspDefinition<cr>
 
 " close the tree window after opening a file
 let g:NERDTreeQuitOnOpen = 1
