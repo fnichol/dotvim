@@ -259,6 +259,16 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 0
 let g:ale_lint_on_filtype_changed = 0
 
+" Initialize the ALE fixers dictionary
+let g:ale_fixers = {}
+
+" If `shfmt` is present, register it as an ALE fixer, using Google-style
+" formatting
+if executable('shfmt')
+  let g:ale_fixers['sh'] = ['shfmt']
+  let g:ale_sh_shfmt_options = '-i 2 -ci'
+endif
+
 " asyncomplete
 
 " `Tab` key press calls `Ctrl+n` only if the completion window is visible
