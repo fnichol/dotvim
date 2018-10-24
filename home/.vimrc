@@ -182,6 +182,11 @@ if exists('g:plugs')
     source ~/.vimrc_background
   else
     if has('mac') && match(&term, "-256color$") != -1
+      " Set the `t_8f` and `t_8b` options if running in tmux or screen
+      if match(&term, "^screen-") != -1
+        let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+        let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+      endif
       " Set termguicolors if running on macOS in a 256 color term
       set termguicolors
     elseif !has('mac')
