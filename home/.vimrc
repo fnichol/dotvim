@@ -271,7 +271,7 @@ let g:ale_fixers = {}
 " formatting
 if executable('shfmt')
   let g:ale_fixers['sh'] = ['shfmt']
-  let g:ale_sh_shfmt_options = '-i 2 -ci'
+  let g:ale_sh_shfmt_options = '-i 2 -ci -bn'
 endif
 
 " asyncomplete
