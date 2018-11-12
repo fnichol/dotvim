@@ -80,7 +80,7 @@ function! s:rustup_toolchain_install(toolchain)
     return 0
   endif
 
-  execute 'silent !rustup toolchain install ' . a:component
+  execute 'silent !rustup toolchain install ' . a:toolchain
 
   if s:rustup_toolchain_installed(a:toolchain)
     redraw!
