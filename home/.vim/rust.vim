@@ -1,5 +1,6 @@
 let s:rls_components = ['rls-preview', 'rust-analysis', 'rust-src']
 let s:rustfmt_component = 'rustfmt-preview'
+let s:clippy_component = 'clippy-preview'
 
 function! FileTypeRust()
   " Runs rustfmt on buffer write, if rustfmt is installed
@@ -98,6 +99,17 @@ function! s:rustup_toolchain_install(toolchain)
   endif
 endfunction
 
+function! s:clippy_install()
+  if s:rustup_component_add(s:clippy_component)
+    " Remove command
+    delcommand InstallClippy
+    " Enable Clippy as Rust ALE linter
+    let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+
+    echom '[cargo-clippy] Installation complete.'
+  endif
+endfunction
+
 function! s:rustfmt_install()
   if s:rustup_component_add(s:rustfmt_component)
     " Remove command
@@ -175,6 +187,11 @@ endfunction
 " Setup an `:InstallRustfmt` command if Rustfmt is not currently installed
 if !s:rustup_installed(s:rustfmt_component)
   command! -nargs=0 -bar InstallRustfmt call s:rustfmt_install()
+endif
+
+" Setup an `:InstallClippy` command if Clippy is not currently installed
+if !s:rustup_installed(s:clippy_component)
+  command! -nargs=0 -bar InstallClippy call s:clippy_install()
 endif
 
 " Setup an `:InstallRls` command if the software components for RLS are not
