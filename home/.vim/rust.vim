@@ -41,6 +41,10 @@ function! s:rls_installed()
     endif
   endfor
 
+  if !exists('racer')
+    return 0
+  endif
+
   return 1
 endfunction
 
