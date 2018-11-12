@@ -24,6 +24,16 @@ function! s:rustup_installed(component)
   endif
 endfunction
 
+function! s:rustup_toolchain_installed(toolchain)
+  let l:matches = systemlist('rustup toolchain list | ' .
+        \ ' grep "^' . a:toolchain . '"')
+  if len(l:matches) > 0
+    return 1
+  else
+    return 0
+  endif
+endfunction
+
 function! s:rls_installed()
   for component in s:rls_components
     if !s:rustup_installed(component)
@@ -52,6 +62,29 @@ function! s:rustup_component_add(component)
     echohl ErrorMsg
     echo '[rustup] ' .
           \ 'Failed to add component ' . a:component
+    echohl None
+    return 0
+  endif
+endfunction
+
+function! s:rustup_toolchain_install(toolchain)
+  if !executable('rustup')
+    echohl ErrorMsg
+    echo '[rustup] ' .
+          \ 'rustup not found which is required. Please install and retry.'
+    echohl None
+    return 0
+  endif
+
+  execute 'silent !rustup toolchain install ' . a:component
+
+  if s:rustup_toolchain_installed(a:toolchain)
+    redraw!
+    return 1
+  else
+    echohl ErrorMsg
+    echo '[rustup] ' .
+          \ 'Failed to install toolchain ' . a:toolchain
     echohl None
     return 0
   endif
@@ -86,8 +119,8 @@ function! s:rls_install()
   endfor
 
   if !exists('racer')
-    if s:cargo_nightly_install('racer')
-      return 1
+    if !s:cargo_nightly_install('racer')
+      return 0
     endif
   endif
 
@@ -115,13 +148,19 @@ function! s:cargo_nightly_install(name)
     echo '[' . a:name . ' install] ' .
           \ 'cargo not found which is required. Please install and retry.'
     echohl None
-    return 1
+    return 0
+  endif
+
+  if !s:rustup_toolchain_installed('nightly')
+    if !s:rustup_toolchain_install('nightly')
+      return 0
+    endif
   endif
 
   execute '!cargo +nightly install ' . a:name
   echom '[' . a:name . ' install] ' .
         \ 'Installation complete.'
-  return 0
+  return 1
 endfunction
 
 
