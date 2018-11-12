@@ -11,6 +11,10 @@ function! FileTypeRust()
   if executable('cargo')
     let g:ale_linters['rust'] = ['cargo']
   endif
+
+  " Use `cargo clippy` over `cargo check` if Clippy is present (Clippy is a
+  " super-set of `cargo check`)
+  let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 endfunction
 
 function! s:rustup_installed(component)
