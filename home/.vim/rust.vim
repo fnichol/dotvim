@@ -46,7 +46,7 @@ function! s:rls_installed()
     endif
   endfor
 
-  if !exists('racer')
+  if !executable('racer')
     return 0
   endif
 
@@ -138,7 +138,7 @@ function! s:rls_install()
     endif
   endfor
 
-  if !exists('racer')
+  if !executable('racer')
     if !s:cargo_nightly_install('racer')
       return 0
     endif
