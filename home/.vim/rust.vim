@@ -1,6 +1,6 @@
-let s:rls_components = ['rls-preview', 'rust-analysis', 'rust-src']
-let s:rustfmt_component = 'rustfmt-preview'
-let s:clippy_component = 'clippy-preview'
+let s:rls_components = ['rls', 'rust-analysis', 'rust-src']
+let s:rustfmt_component = 'rustfmt'
+let s:clippy_component = 'clippy'
 
 function! FileTypeRust()
   " Runs rustfmt on buffer write, if rustfmt is installed
