@@ -1,8 +1,13 @@
 let s:rls_components = ['rls', 'rust-analysis', 'rust-src']
 let s:rustfmt_component = 'rustfmt'
 let s:clippy_component = 'clippy'
+let g:rust_ft_loaded = 0
 
 function! FileTypeRust()
+  if g:rust_ft_loaded
+    return 1
+  endif
+
   " Runs rustfmt on buffer write, if rustfmt is installed
   if s:rustup_installed(s:rustfmt_component)
     let g:rustfmt_autosave = 1
@@ -16,6 +21,8 @@ function! FileTypeRust()
   " Use `cargo clippy` over `cargo check` if Clippy is present (Clippy is a
   " super-set of `cargo check`)
   let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+
+  let g:rust_ft_loaded = 1
 endfunction
 
 function! s:rustup_installed(component)
