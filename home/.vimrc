@@ -210,13 +210,24 @@ endif
 function! ToggleSpellCheck()
   set spell!
   if &spell
-    echo 'Spellcheck on'
+    echo '[toggle] Spell check enabled (+)'
   else
-    echo 'Spellcheck off'
+    echo '[toggle] Spell check disabled (-)'
   endif
 endfunction
-" Map leader s to toggle spell checking on and off
-map <leader>s :call ToggleSpellCheck()<CR>
+" Map leader ts to toggle spell checking on and off
+map <leader>ts :call ToggleSpellCheck()<CR>
+
+" Check the status of spellchecking
+function! StatusSpellCheck()
+  if &spell
+    echo '[status] Spell check enabled (+)'
+  else
+    echo '[status] Spell check disabled (-)'
+  endif
+endfunction
+" Map leader ss to check the status of spell checking
+map <leader>ss :call StatusSpellCheck()<CR>
 
 " Set spellchecking languages to be used in priority order
 set spelllang=en_us,en_ca
