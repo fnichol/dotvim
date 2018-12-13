@@ -21,19 +21,15 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'uarun/vim-protobuf'
-Plug 'w0rp/ale'
 
 " Plugins that require specific, newer versions of vim
 if v:version > 704
   Plug 'fatih/vim-go'
 endif
 
-" Generic Language Server Protocol (LSP) support
+" Plugins that require specific, newer versions of vim
 if v:version > 800
-  Plug 'prabirshrestha/async.vim'
-  Plug 'prabirshrestha/vim-lsp'
-  Plug 'prabirshrestha/asyncomplete.vim'
-  Plug 'prabirshrestha/asyncomplete-lsp.vim'
+  Plug 'w0rp/ale'
 endif
 
 " Lazily install & load the YouCompleteMe plugin

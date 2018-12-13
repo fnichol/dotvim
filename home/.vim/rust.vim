@@ -13,14 +13,24 @@ function! FileTypeRust()
     let g:rustfmt_autosave = 1
   endif
 
-  " Set Cargo as the default ALE linter, if the `cargo` binary is present
-  if executable('cargo')
-    let g:ale_linters['rust'] = ['cargo']
-  endif
-
   " Use `cargo clippy` over `cargo check` if Clippy is present (Clippy is a
   " super-set of `cargo check`)
   let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+
+  " Set the RLS toolchain based on the currently active toolchain, unless we
+  " cannot determine the toolchain's short name
+  let l:active = split(system('rustup show active-toolchain'), '-')[0]
+  if index(['stable', 'beta', 'nightly'], l:active) >=? 0
+    let g:ale_rust_rls_toolchain = l:active
+  endif
+
+  if s:rls_installed()
+    " If RLS is installed, set RLS as the ALE linter for Rust
+    let g:ale_linters['rust'] = ['rls']
+  elseif executable('cargo')
+    " If the `cargo` binary is present, set Cargo as the ALE linter for Rust
+    let g:ale_linters['rust'] = ['cargo']
+  endif
 
   let g:rust_ft_loaded = 1
 endfunction
@@ -154,19 +164,6 @@ function! s:rls_install()
   echom '[rls] Installation complete.'
 
   delcommand InstallRls
-  command! -nargs=0 -bar RlsEnable call s:rls_enable()
-endfunction
-
-function! s:rls_enable()
-  call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': { server_info->['rustup', 'run', 'stable', 'rls']},
-        \ 'whitelist': ['rust']
-        \ })
-  delcommand RlsEnable
-
-  " Set RLS as the ALE linter for Rust
-  let g:ale_linters['rust'] = ['rls']
 endfunction
 
 function! s:cargo_nightly_install(name)
@@ -202,13 +199,7 @@ if !s:rustup_installed(s:clippy_component)
 endif
 
 " Setup an `:InstallRls` command if the software components for RLS are not
-" currently installed. Otherwise, setup an `RlsEnable` which will laazily
-" activate the feature.
-if s:rls_installed()
-  " As of November 2017, RLS doesn't have support for Cargo workspaces so is
-  " not a viable solution all the time (for me, at least). Therefore, delay
-  " registering the service until `:RlsEnable` is called.
-  command! -nargs=0 -bar RlsEnable call s:rls_enable()
-else
+" currently installed.
+if !s:rls_installed()
   command! -nargs=0 -bar InstallRls call s:rls_install()
 endif

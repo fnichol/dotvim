@@ -285,7 +285,34 @@ if executable('shfmt')
   let g:ale_sh_shfmt_options = '-i 2 -ci -bn'
 endif
 
-" asyncomplete
+" Toggle code completion on and off
+function! ToggleALECompletion()
+  if g:ale_completion_enabled
+    call ale#completion#Disable()
+    echo '[toggle] ALE completion disabled (-)'
+  else
+    call ale#completion#Enable()
+    echo '[toggle] ALE completion enabled (+)'
+  endif
+endfunction
+" Map leader tc to toggle code completion on and off
+map <leader>tc :call ToggleALECompletion()<CR>
+
+" Check the status of code completion
+function! StatusALECompletion()
+  if g:ale_completion_enabled
+    echo '[status] ALE completion enabled (+)'
+  else
+    echo '[status] ALE completion disabled (-)'
+  endif
+endfunction
+" Map leader sc to check the status of code completion
+map <leader>sc :call StatusALECompletion()<CR>
+
+" Map `Ctrl+i` to hover
+map <C-i> :ALEHover<cr>
+" Map `g] to go to definition
+nnoremap g] :ALEGoToDefinition<cr>
 
 " `Tab` key press calls `Ctrl+n` only if the completion window is visible
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -298,14 +325,6 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 " Auto-close the preview window when completion is done
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-imap <C-space> <Plug>(asyncomplete_force_refresh)
-
-" Language Server Protocol
-
-" Map `Ctrl+i` to hover
-map <C-i> :LspHover<cr>
-" Map `g] to go to definition
-nnoremap g] :LspDefinition<cr>
 
 " close the tree window after opening a file
 let g:NERDTreeQuitOnOpen = 1
