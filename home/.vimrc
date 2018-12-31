@@ -296,7 +296,7 @@ function! ToggleALECompletion()
   endif
 endfunction
 " Map leader tc to toggle code completion on and off
-map <leader>tc :call ToggleALECompletion()<CR>
+nmap <leader>tc :call ToggleALECompletion()<CR>
 
 " Check the status of code completion
 function! StatusALECompletion()
@@ -307,7 +307,7 @@ function! StatusALECompletion()
   endif
 endfunction
 " Map leader sc to check the status of code completion
-map <leader>sc :call StatusALECompletion()<CR>
+nmap <leader>sc :call StatusALECompletion()<CR>
 
 " Map `Ctrl+i` to hover
 map <C-i> :ALEHover<cr>
