@@ -366,6 +366,9 @@ let g:ctrlp_working_path_mode = 'a'
 source ~/.vim/rust.vim
 autocmd vimrc FileType rust call FileTypeRust()
 
+source ~/.vim/javascript.vim
+autocmd vimrc FileType javascript call FileTypeJavascript()
+
 " Enable a bit more syntax highlighting for Go code
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
