@@ -277,6 +277,7 @@ let g:ale_lint_on_filtype_changed = 0
 
 " Initialize the ALE fixers dictionary
 let g:ale_fixers = {}
+let g:ale_fix_on_save = 1
 
 " If `shfmt` is present, register it as an ALE fixer, using Google-style
 " formatting
@@ -308,6 +309,30 @@ function! StatusALECompletion()
 endfunction
 " Map leader sc to check the status of code completion
 nmap <leader>sc :call StatusALECompletion()<CR>
+
+" Toggle fix-on-save on and off
+function! ToggleALEFixOnSave()
+  if g:ale_fix_on_save
+    let g:ale_fix_on_save = 0
+    echo '[toggle] ALE fix-on-save disabled (-)'
+  else
+    let g:ale_fix_on_save = 1
+    echo '[toggle] ALE fix-on-save enabled (+)'
+  endif
+endfunction
+" Map leader tc to toggle fix-on-save on and off
+nmap <leader>tf :call ToggleALEFixOnSave()<CR>
+
+" Check the status of fix-on-save
+function! StatusALEFixOnSave()
+  if g:ale_fix_on_save
+    echo '[status] ALE fix-on-save enabled (+)'
+  else
+    echo '[status] ALE fix-on-save disabled (-)'
+  endif
+endfunction
+" Map leader sc to check the status of fix-on-save
+nmap <leader>sf :call StatusALEFixOnSave()<CR>
 
 " Map `Ctrl+i` to hover
 map <C-i> :ALEHover<cr>
