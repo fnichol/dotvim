@@ -24,12 +24,15 @@ function! FileTypeRust()
     let g:ale_rust_rls_toolchain = l:active
   endif
 
+  " Initialize the ALE linters list for Rust
+  let g:ale_linters['rust'] = []
+  " If RLS is installed, add RLS as a ALE linter for Rust
   if s:rls_installed()
-    " If RLS is installed, set RLS as the ALE linter for Rust
-    let g:ale_linters['rust'] = ['rls']
-  elseif executable('cargo')
-    " If the `cargo` binary is present, set Cargo as the ALE linter for Rust
-    let g:ale_linters['rust'] = ['cargo']
+    let g:ale_linters['rust'] += ['rls']
+  endif
+  " If the `cargo` binary is present, add Cargo as a ALE linter for Rust
+  if executable('cargo')
+    let g:ale_linters['rust'] += ['cargo']
   endif
 
   let g:rust_ft_loaded = 1
