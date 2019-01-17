@@ -4,6 +4,7 @@ let s:clippy_component = 'clippy'
 let g:rust_ft_loaded = 0
 
 function! FileTypeRust()
+  " Early return if this file type block has been executed once already
   if g:rust_ft_loaded
     return 1
   endif
@@ -35,6 +36,7 @@ function! FileTypeRust()
     let g:ale_linters['rust'] += ['cargo']
   endif
 
+  " Remember that this file type block has been executed once before
   let g:rust_ft_loaded = 1
 endfunction
 
