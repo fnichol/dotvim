@@ -18,6 +18,14 @@ function! FileTypeRust()
   " super-set of `cargo check`)
   let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 
+  " Use the `--all-targets` option with running either `cargo check` or `cargo
+  " clippy`
+  let g:ale_rust_cargo_check_all_targets = 1
+
+  " Use the `--tests` option when running either `cargo check` or `cargo
+  " clippy`
+  let g:ale_rust_cargo_check_tests = 1
+
   " Set the RLS toolchain based on the currently active toolchain, unless we
   " cannot determine the toolchain's short name
   let l:active = split(system('rustup show active-toolchain'), '-')[0]
