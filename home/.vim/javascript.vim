@@ -10,7 +10,7 @@ function! FileTypeJavascript()
     call s:add_prettier_ale_fixers()
   endif
 
-  let g:rust_ft_loaded = 1
+  let g:javascript_ft_loaded = 1
 endfunction
 
 function! s:add_prettier_ale_fixers()
