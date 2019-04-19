@@ -7,3 +7,4 @@ setlocal tabstop=8
 setlocal softtabstop=0
 setlocal shiftwidth=8
 setlocal noexpandtab
+setlocal listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
