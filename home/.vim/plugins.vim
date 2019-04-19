@@ -36,7 +36,12 @@ endif
 
 " Plugins that require specific, newer versions of vim
 if v:version > 800
-  Plug 'w0rp/ale'
+  " 2019-04-18 - Temporarily use fork of ale which adds support for not
+  " changing directories when using `shellcheck`. When a change is landed,
+  " then revert back to canonical repo
+  "
+  " Pull Request https://github.com/w0rp/ale/pull/2446
+  Plug 'fnichol/ale', { 'branch': 'add-var-sh-shellcheck-change-directory' }
 endif
 
 " Lazily install & load the YouCompleteMe plugin

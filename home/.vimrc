@@ -286,6 +286,13 @@ if executable('shfmt')
   let g:ale_sh_shfmt_options = '-i 2 -ci -bn'
 endif
 
+" If `shellcheck` is present, disable changing directories before checking
+" buffers with ShellCheck--this means all `shellcheck source=...` directives
+" are relative to the root of the project, where `vim` is launched.
+if executable('shellcheck')
+  let g:ale_sh_shellcheck_change_directory = 0
+endif
+
 " Toggle code completion on and off
 function! ToggleALECompletion()
   if g:ale_completion_enabled
