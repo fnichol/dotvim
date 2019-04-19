@@ -28,6 +28,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'uarun/vim-protobuf'
 Plug 'pangloss/vim-javascript'
+Plug 'Yggdroot/indentLine'
 
 " Plugins that require specific, newer versions of vim
 if v:version > 704
