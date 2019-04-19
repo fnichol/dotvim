@@ -358,6 +358,9 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 
+" disable JSON syntax concealing
+let g:vim_json_syntax_conceal = 0
+
 " close the tree window after opening a file
 let g:NERDTreeQuitOnOpen = 1
 
