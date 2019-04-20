@@ -50,7 +50,7 @@ set nowritebackup                 " same again
 
 set directory=$HOME/.vim/tmp//,.  " keep swap files in one location"
 
-set tabstop=2                     " number of spaces that a <Tab> in the file
+set tabstop=8                     " number of spaces that a <Tab> in the file
                                   " counts for
 set shiftwidth=2                  " number of spaces to use for each step of
                                   " (auto)indent
@@ -60,7 +60,11 @@ set expandtab                     " use spaces instead of tabs
 set list                          " display unprintable characters
 
 " setting display chars for tab and eol
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+if (&encoding ==# "utf-8" && &term isnot# "linux")
+  set listchars=tab:»\ ,trail:-,extends:>,precedes:<,nbsp:+
+else
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
 
 " ctrl+h: nav to left window
 nnoremap <C-h> <C-w>h
