@@ -16,8 +16,9 @@ if exists("b:did_ftplugin")
   finish
 endif
 
-setlocal tabstop=4
-setlocal shiftwidth=4
+setlocal tabstop=8
+setlocal shiftwidth=8
+setlocal softtabstop=8
 setlocal noexpandtab
 
 if (&encoding ==# "utf-8" && &term isnot# "linux")
