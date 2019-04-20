@@ -11,8 +11,12 @@
 " * https://www.reddit.com/r/golang/comments/unc7a/match_go_fmt_to_settings_in_vim_with_4space_tabs/
 " * https://hashrocket.com/blog/posts/cool-looking-tabs-in-vim
 "
-autocmd BufNewFile,BufRead *.go setlocal
-  \ noexpandtab
-  \ tabstop=4
-  \ shiftwidth=4
-  \ listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
+" Only do this when not done yet for this buffer
+if exists("b:did_ftplugin")
+  finish
+endif
+
+setlocal tabstop=4
+setlocal shiftwidth=4
+setlocal noexpandtab
+setlocal listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
