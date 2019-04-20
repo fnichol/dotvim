@@ -19,4 +19,9 @@ endif
 setlocal tabstop=4
 setlocal shiftwidth=4
 setlocal noexpandtab
-setlocal listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
+
+if (&encoding ==# "utf-8" && &term isnot# "linux")
+  setlocal listchars=tab:\⸽\ ,trail:-,extends:>,precedes:<,nbsp:+
+else
+  setlocal listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif

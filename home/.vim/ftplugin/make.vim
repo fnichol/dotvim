@@ -7,4 +7,10 @@ setlocal tabstop=8
 setlocal softtabstop=0
 setlocal shiftwidth=8
 setlocal noexpandtab
-setlocal listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
+
+if (&encoding ==# "utf-8" && &term isnot# "linux")
+  setlocal listchars=tab:\⸽\ ,trail:-,extends:>,precedes:<,nbsp:+
+else
+  setlocal listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
+endif
+
