@@ -61,7 +61,7 @@ set list                          " display unprintable characters
 
 " setting display chars for tab and eol
 if (&encoding ==# "utf-8" && &term isnot# "linux")
-  set listchars=tab:»\ ,trail:-,extends:>,precedes:<,nbsp:+
+  set listchars=tab:┆\ ,trail:-,extends:>,precedes:<,nbsp:+
 else
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
