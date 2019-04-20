@@ -13,4 +13,3 @@ if (&encoding ==# "utf-8" && &term isnot# "linux")
 else
   setlocal listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
-
