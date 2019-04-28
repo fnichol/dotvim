@@ -382,6 +382,13 @@ let g:ctrlp_custom_ignore = '\v[\/](tmp|vendor/bundle|\.git)$'
 " Ctrl-P sets its local working directory the directory of the current file
 let g:ctrlp_working_path_mode = 'a'
 
+" Disable Markdown code folding
+let g:vim_markdown_folding_disabled = 1
+" Disable Markdown syntax concealing
+let g:vim_markdown_conceal = 0
+" Highlight Markdown YAML front matter
+let g:vim_markdown_frontmatter = 1
+
 source ~/.vim/rust.vim
 autocmd vimrc FileType rust call FileTypeRust()
 

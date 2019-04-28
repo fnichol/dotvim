@@ -14,7 +14,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
-Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vividchalk'
 Plug 'honza/dockerfile.vim'
@@ -29,6 +28,7 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'uarun/vim-protobuf'
 Plug 'pangloss/vim-javascript'
 Plug 'Yggdroot/indentLine'
+Plug 'plasticboy/vim-markdown'
 
 " Plugins that require specific, newer versions of vim
 if v:version > 704
