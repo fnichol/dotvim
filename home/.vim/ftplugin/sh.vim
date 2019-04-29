@@ -6,14 +6,6 @@ let b:did_ftplugin = 1
 
 setlocal colorcolumn=80
 
-function! s:is_bash_language_server_installed()
-  if !exists('g:bash_language_server_installed')
-    let g:bash_language_server_installed = executable('bash-language-server')
-  end
-
-  return g:bash_language_server_installed
-endfunction
-
 if !exists('b:ale_fixers')
   let b:ale_fixers = []
 endif
@@ -40,7 +32,7 @@ if executable('shellcheck')
   let b:ale_sh_shellcheck_change_directory = 0
 endif
 
-if s:is_bash_language_server_installed()
+if IsBashLanguageServerInstalled()
   let b:ale_linters += ['language_server']
 else
   command! -nargs=0 -bar InstallBashLanguageServer
