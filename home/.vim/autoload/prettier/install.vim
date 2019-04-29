@@ -1,4 +1,4 @@
-function! prettier#Install() abort
+function! prettier#install#Install() abort
   if !executable('npm')
     echohl ErrorMsg
     echo '[prettier] ' .
@@ -13,7 +13,7 @@ function! prettier#Install() abort
     redraw!
     delcommand InstallPrettier
     if exists('g:prettier_installed')
-      " Clear any state for next install check
+      " Clear any state for next detect
       unlet g:prettier_installed
     endif
     echom '[prettier] Installation complete.'

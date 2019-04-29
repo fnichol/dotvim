@@ -8,8 +8,8 @@ if !exists('b:ale_fixers')
   let b:ale_fixers = []
 endif
 
-if IsPrettierInstalled()
+if prettier#detect#Detect()
   let b:ale_fixers += ['prettier']
 else
-  command! -nargs=0 -bar InstallPrettier call prettier#Install()
+  command! -nargs=0 -bar InstallPrettier call prettier#install#Install()
 endif
