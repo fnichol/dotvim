@@ -6,20 +6,12 @@ let b:did_ftplugin = 1
 
 setlocal colorcolumn=80
 
-function! IsVintInstalled()
-  if !exists('g:vint_installed')
-    let g:vint_installed = executable('vint')
-  end
-
-  return g:vint_installed
-endfunction
-
 if !exists('b:ale_linters')
   let b:ale_linters = []
 endif
 
-if IsVintInstalled()
+if vint#detect#Detect()
   let b:ale_linters += ['vint']
 else
-  command! -nargs=0 -bar InstallVint call vint#Install()
+  command! -nargs=0 -bar InstallVint call vint#install#Install()
 endif

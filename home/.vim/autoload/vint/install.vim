@@ -1,4 +1,4 @@
-function! vint#Install() abort
+function! vint#install#Install() abort
   if !executable('pip')
     echohl ErrorMsg
     echo '[vint] ' .
@@ -13,7 +13,7 @@ function! vint#Install() abort
     redraw!
     delcommand InstallVint
     if exists('g:vint_installed')
-      " Clear any state for next install check
+      " Clear any state for next detect
       unlet g:vint_installed
     endif
     echom '[vint] Installation complete.'
