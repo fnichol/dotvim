@@ -1,4 +1,4 @@
-function! bash_language_server#Install() abort
+function! bash_language_server#install#Install() abort
   if !executable('npm')
     echohl ErrorMsg
     echo '[bash-language-server] ' .

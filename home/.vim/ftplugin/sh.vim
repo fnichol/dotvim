@@ -32,9 +32,9 @@ if executable('shellcheck')
   let b:ale_sh_shellcheck_change_directory = 0
 endif
 
-if IsBashLanguageServerInstalled()
+if bash_language_server#detect#Detect()
   let b:ale_linters += ['language_server']
 else
   command! -nargs=0 -bar InstallBashLanguageServer
-        \ call bash_language_server#Install()
+        \ call bash_language_server#install#Install()
 endif
