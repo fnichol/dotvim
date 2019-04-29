@@ -375,6 +375,9 @@ let g:vim_markdown_conceal = 0
 " Highlight Markdown YAML front matter
 let g:vim_markdown_frontmatter = 1
 
+" Exclude `nerdtree` filetypes from indent behavior
+let g:indentLine_fileTypeExclude = ['nerdtree']
+
 source ~/.vim/rust.vim
 autocmd vimrc FileType rust call FileTypeRust()
 
