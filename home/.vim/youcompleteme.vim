@@ -66,7 +66,7 @@ function! YcmPostinstall(info)
   endif
 
   " Run the install program with the computed flags
-  execute "!./install.py " . join(flags)
+  execute '!./install.py ' . join(flags)
   " Register the `:YcmLoad` command
   command! -nargs=0 -bar YcmLoad call s:ycm_load()
   " De-register the `:InstallYcm` command
@@ -85,7 +85,7 @@ endfunction
 
 " If the YouCompleteMe plugin directory exists, assume that it is setup and
 " register (but don't load) the plugin.
-if isdirectory(expand(g:plug_home . "/" . s:ycm_name))
+if isdirectory(expand(g:plug_home . '/' . s:ycm_name))
   execute 'Plug ''' . s:ycm_repo . ''', { ''on'': ''YcmLoad'' }'
 
   " Register the `:YcmLoad` command to load the plugin for use only when

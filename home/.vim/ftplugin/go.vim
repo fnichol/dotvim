@@ -12,7 +12,7 @@
 " * https://hashrocket.com/blog/posts/cool-looking-tabs-in-vim
 "
 " Only do this when not done yet for this buffer
-if exists("b:did_ftplugin")
+if exists('b:did_ftplugin')
   finish
 endif
 let b:did_ftplugin = 1
