@@ -45,6 +45,3 @@ if v:version > 800
   " Pull Request https://github.com/w0rp/ale/pull/2446
   Plug 'fnichol/ale', { 'branch': 'add-var-sh-shellcheck-change-directory' }
 endif
-
-" Lazily install & load the YouCompleteMe plugin
-source ~/.vim/youcompleteme.vim
