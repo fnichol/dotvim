@@ -378,9 +378,6 @@ let g:vim_markdown_frontmatter = 1
 " Exclude `nerdtree` filetypes from indent behavior
 let g:indentLine_fileTypeExclude = ['nerdtree']
 
-source ~/.vim/rust.vim
-autocmd vimrc FileType rust call FileTypeRust()
-
 " Enable a bit more syntax highlighting for Go code
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
