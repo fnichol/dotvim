@@ -1,3 +1,3 @@
-" Capfile
-autocmd BufNewFile,BufReadPost Capfile set filetype=ruby
+" vint: -ProhibitAutocmdWithNoGroup
 
+autocmd BufNewFile,BufReadPost Capfile set filetype=ruby

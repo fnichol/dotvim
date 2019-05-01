@@ -1,2 +1,3 @@
-" Dockerfile
-autocmd BufNewFile,BufReadPost Dockerfile set filetype=dockerfile
+" vint: -ProhibitAutocmdWithNoGroup
+
+autocmd BufNewFile,BufReadPost Dockerfile,Dockerfile.* set filetype=dockerfile

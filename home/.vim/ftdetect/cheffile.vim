@@ -1,3 +1,3 @@
-" Cheffile
-autocmd BufNewFile,BufReadPost Cheffile set filetype=ruby
+" vint: -ProhibitAutocmdWithNoGroup
 
+autocmd BufNewFile,BufReadPost Cheffile set filetype=ruby

@@ -1,2 +1,3 @@
-" Xdefaults/Xresources files
+" vint: -ProhibitAutocmdWithNoGroup
+
 autocmd BufNewFile,BufReadPost *.xdefaults set filetype=xdefaults

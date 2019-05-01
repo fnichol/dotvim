@@ -1,3 +1,3 @@
-" Berksfile
-autocmd BufNewFile,BufReadPost Berksfile set filetype=ruby
+" vint: -ProhibitAutocmdWithNoGroup
 
+autocmd BufNewFile,BufReadPost Berksfile set filetype=ruby

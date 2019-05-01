@@ -1,2 +1,3 @@
-" Rabl
-au BufRead,BufNewFile *.rabl setf ruby
+" vint: -ProhibitAutocmdWithNoGroup
+
+autocmd BufNewFile,BufReadPost *.rabl set filetype=ruby
