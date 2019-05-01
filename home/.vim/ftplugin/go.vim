@@ -12,10 +12,10 @@
 " * https://hashrocket.com/blog/posts/cool-looking-tabs-in-vim
 "
 " Only do this when not done yet for this buffer
-if exists('b:did_ftplugin')
+if exists('b:did_vimrc_ftplugin')
   finish
 endif
-let b:did_ftplugin = 1
+let b:did_vimrc_ftplugin = 1
 
 setlocal tabstop=8
 setlocal shiftwidth=8
