@@ -2,4 +2,5 @@ container:
   image: fnichol/vint:latest
 
 check_task:
+  setup_script: apk add make
   check_script: make check
