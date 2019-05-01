@@ -1,0 +1,5 @@
+container:
+  image: fnichol/vint:latest
+
+check_task:
+  check_script: make check
