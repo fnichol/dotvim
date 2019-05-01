@@ -1,23 +1,23 @@
-function! s:default_target()
+function! s:default_target() abort
   return get(split(get(filter(systemlist(
         \ 'rustup target list'), 'v:val =~? " (default)$"'), 0, ''), '\s\+'),
         \ 0, '')
 endfunction
 
-function! s:component_installed(toolchain, fq_component)
+function! s:component_installed(toolchain, fq_component) abort
   return index(systemlist(
         \ 'rustup component list --installed --toolchain ' . a:toolchain),
         \ a:fq_component) >= 0
 endfunction
 
-function! s:active_component_installed(component)
+function! s:active_component_installed(component) abort
   return s:component_installed(rust#detect#RlsActiveToolchain(),
-        \ a:component == 'rust-src'
+        \ a:component ==? 'rust-src'
         \ ? a:component
         \ : a:component . '-' . s:default_target())
 endfunction
 
-function! s:default_target_toolchain_installed(short_toolchain)
+function! s:default_target_toolchain_installed(short_toolchain) abort
   " The toolchain list subcommand returns the default toolchain line with a
   " ` (default)` ending, so we'll strip this out by splitting on whitespace
   return index(map(systemlist(
@@ -25,7 +25,7 @@ function! s:default_target_toolchain_installed(short_toolchain)
         \ a:short_toolchain . '-' . s:default_target()) >= 0
 endfunction
 
-function! rust#detect#RlsActiveToolchain()
+function! rust#detect#RlsActiveToolchain() abort
   if !exists('g:rust_rls_active_toolchain')
     let g:rust_rls_active_toolchain = get(split(system(
           \ 'rustup show active-toolchain'), '\s\+'), 0, '')
@@ -34,19 +34,19 @@ function! rust#detect#RlsActiveToolchain()
   return g:rust_rls_active_toolchain
 endfunction
 
-function! rust#detect#RlsComponents()
+function! rust#detect#RlsComponents() abort
   return ['rls', 'rust-analysis', 'rust-src']
 endfunction
 
-function! rust#detect#ClippyComponent()
+function! rust#detect#ClippyComponent() abort
   return 'clippy'
 endfunction
 
-function! rust#detect#RustfmtComponent()
+function! rust#detect#RustfmtComponent() abort
   return 'rustfmt'
 endfunction
 
-function! rust#detect#DetectRustupComponent(component)
+function! rust#detect#DetectRustupComponent(component) abort
   let l:var = substitute(a:component, '-', '_', 'g')
 
   if !exists('g:rust_rustup_component_installed_' . l:var)
@@ -57,7 +57,7 @@ function! rust#detect#DetectRustupComponent(component)
   exec 'return g:rust_rustup_component_installed_' . l:var
 endfunction
 
-function! rust#detect#DetectRustupToolchain(toolchain)
+function! rust#detect#DetectRustupToolchain(toolchain) abort
   let l:var = substitute(a:toolchain, '-', '_', 'g')
 
   if !exists('g:rust_rustup_toolchain_installed_' . l:var)
@@ -68,7 +68,7 @@ function! rust#detect#DetectRustupToolchain(toolchain)
   exec 'return g:rust_rustup_toolchain_installed_' . l:var
 endfunction
 
-function! rust#detect#DetectRls()
+function! rust#detect#DetectRls() abort
   if !exists('g:rust_rls_installed')
     for component in rust#detect#RlsComponents()
       if !rust#detect#DetectRustupComponent(component)

@@ -1,4 +1,4 @@
-function! s:rustup_is_missing(title)
+function! s:rustup_is_missing(title) abort
   if !executable('rustup')
     echohl ErrorMsg
     echo '[' . a:title' ] ' .
@@ -10,7 +10,7 @@ function! s:rustup_is_missing(title)
   endif
 endfunction
 
-function! s:cargo_is_missing(title)
+function! s:cargo_is_missing(title) abort
   if !executable('cargo')
     echohl ErrorMsg
     echo '[' . a:title' ] ' .
@@ -22,7 +22,7 @@ function! s:cargo_is_missing(title)
   endif
 endfunction
 
-function! s:rustup_component_add(component)
+function! s:rustup_component_add(component) abort
   if s:rustup_is_missing('component: ' . a:component)
     return 0
   endif
@@ -46,7 +46,7 @@ function! s:rustup_component_add(component)
   endif
 endfunction
 
-function! s:cargo_nightly_install(name)
+function! s:cargo_nightly_install(name) abort
   if s:cargo_is_missing('install: '. a:name)
     return 0
   endif
@@ -61,7 +61,7 @@ function! s:cargo_nightly_install(name)
   echom '[' . a:name . '] Installation complete.'
 endfunction
 
-function! s:rustup_toolchain_install(toolchain)
+function! s:rustup_toolchain_install(toolchain) abort
   if s:rustup_is_missing('toolchain: ' . a:toolchain)
     return 0
   endif
