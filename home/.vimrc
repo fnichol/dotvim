@@ -375,6 +375,13 @@ if exists('g:plugs["ctrlp"]')
   let g:ctrlp_working_path_mode = 'a'
 endif
 
+if executable('rg')
+  " Configure ack.vim to use ripgrep. Note that we're searching hidden
+  " directories, but not inside `.git`
+  let g:ackprg = "rg --vimgrep --no-heading --smart-case "
+  let g:ackprg .= "--no-ignore --hidden --follow -g '!.git/*'"
+endif
+
 " Disable Markdown code folding
 let g:vim_markdown_folding_disabled = 1
 " Disable Markdown syntax concealing
