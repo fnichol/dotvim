@@ -362,11 +362,18 @@ let g:NERDTreeQuitOnOpen = 1
 " enable extended % matching for HTML, LaTeX, and many other languages
 runtime macros/matchit.vim
 
-" Ctrl-P ignores
-let g:ctrlp_custom_ignore = '\v[\/](tmp|vendor/bundle|\.git)$'
+if exists('g:plugs["fzf"]')
+  " Map `Ctrl+p` to load a fuzzy file finder
+  nnoremap <C-p> :Files<CR>
+endif
 
-" Ctrl-P sets its local working directory the directory of the current file
-let g:ctrlp_working_path_mode = 'a'
+if exists('g:plugs["ctrlp"]')
+  " Ctrl-P ignores
+  let g:ctrlp_custom_ignore = '\v[\/](tmp|vendor/bundle|\.git)$'
+
+  " Ctrl-P sets its local working directory the directory of the current file
+  let g:ctrlp_working_path_mode = 'a'
+endif
 
 " Disable Markdown code folding
 let g:vim_markdown_folding_disabled = 1

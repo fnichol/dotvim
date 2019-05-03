@@ -6,7 +6,6 @@
 " Pull Request https://github.com/chriskempson/base16-vim/pull/198
 Plug 'danielwe/base16-vim'
 Plug 'elzr/vim-json'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'markabe/bufexplorer'
 Plug 'mileszs/ack.vim'
 Plug 'Raimondi/delimitMate'
@@ -39,4 +38,14 @@ endif
 " Plugins that require specific, newer versions of vim
 if v:version > 800
   Plug 'w0rp/ale'
+endif
+
+" Use fzf if vim is new enough and `fzf` is installed
+if v:version >= 740 && executable('fzf')
+  " The install script with `--bin` should detect the system installed program
+  " and produce a symlink at `~/.vim/plugged/fzf/bin/fzf`
+  Plug 'junegunn/fzf', { 'do': './install --bin' }
+  Plug 'junegunn/fzf.vim'
+else
+  Plug 'ctrlpvim/ctrlp.vim'
 endif
