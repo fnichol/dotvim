@@ -380,6 +380,11 @@ if executable('rg')
   " directories, but not inside `.git`
   let g:ackprg = "rg --vimgrep --no-heading --smart-case "
   let g:ackprg .= "--no-ignore --hidden --follow -g '!.git/*'"
+
+  " Set the grep program to use ripgrep
+  " Thanks to: https://git.io/fjnOq
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\
+        \ --no-ignore\ --hidden\ --follow\ -g\ '!.git/*'
 endif
 
 " Disable Markdown code folding
