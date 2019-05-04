@@ -9,7 +9,7 @@ set nocompatible                  " don't make vim vi-compatible (better)
 set modelines=0                   " prevent possible exploits in modelines
 
 " remap leader key to comma
-let mapleader=","
+let mapleader=','
 
 set encoding=utf-8                " sets the character encoding used inside Vim
 scriptencoding utf-8
@@ -61,7 +61,7 @@ set expandtab                     " use spaces instead of tabs
 set list                          " display unprintable characters
 
 " setting display chars for tab and eol
-if (&encoding ==# "utf-8" && &term isnot# "linux")
+if (&encoding ==# 'utf-8' && &term isnot# 'linux')
   set listchars=tab:┆\ ,trail:-,extends:>,precedes:<,nbsp:+
 else
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
@@ -111,21 +111,21 @@ set background=dark               " blue on black background sucks
 let s:theme = 'base16-twilight'   " Color scheme to set
 
 function! s:InstallPluginManager()
-  let plug_src = "https://github.com/junegunn/vim-plug.git"
+  let plug_src = 'https://github.com/junegunn/vim-plug.git'
 
-  echo "Installing plugin manager..."
-  echo ""
+  echo 'Installing plugin manager...'
+  echo ''
   let tmpdir = tempname()
   try
     silent !mkdir -p ~/.vim/autoload
-    execute "silent !git clone --depth 1 " . plug_src . " " . tmpdir
-    execute "silent !mv " . tmpdir . "/plug.vim ~/.vim/autoload/plug.vim"
+    execute 'silent !git clone --depth 1 ' . plug_src . ' ' . tmpdir
+    execute 'silent !mv ' . tmpdir . '/plug.vim ~/.vim/autoload/plug.vim'
   finally
-    execute "silent !rm -rf " . tmpdir
+    execute 'silent !rm -rf ' . tmpdir
   endtry
 endfunction
 
-if has("user_commands") && v:version >= 700 && executable('git')
+if has('user_commands') && v:version >= 700 && executable('git')
   " Install plugin manager if not installed
   if filereadable(expand('~/.vim/autoload/plug.vim'))
     let s:initial_manager_install = 0
@@ -143,20 +143,20 @@ if has("user_commands") && v:version >= 700 && executable('git')
 
   " Install plugins if this is the initial installation
   if s:initial_manager_install == 1
-    echo "Installing plugins..."
-    echo ""
+    echo 'Installing plugins...'
+    echo ''
     :PlugInstall --sync | source $MYVIMRC
   endif
 endif
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
+if &t_Co > 2 || has('gui_running')
   syntax enable                   " turn on syntax highlighting
   set hlsearch                    " highlights mactches
 endif
 
-if has("autocmd")
+if has('autocmd')
   filetype plugin indent on       " turn on file type detection
   "
   " Restore cursor position
@@ -183,9 +183,9 @@ if exists('g:plugs')
     let base16colorspace=256
     source ~/.vimrc_background
   else
-    if has('mac') && match(&term, "-256color$") != -1
+    if has('mac') && match(&term, '-256color$') != -1
       " Set the `t_8f` and `t_8b` options if running in tmux or screen
-      if match(&term, "^screen-") != -1
+      if match(&term, '^screen-') != -1
         let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
         let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
       endif
@@ -350,7 +350,7 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:vim_json_syntax_conceal = 0
 
 " set a nicer indent line character, if possible
-if (&encoding ==# "utf-8" && &term isnot# "linux")
+if (&encoding ==# 'utf-8' && &term isnot# 'linux')
   let g:indentLine_char = '⸽'
 endif
 
@@ -376,7 +376,7 @@ endif
 if executable('rg')
   " Configure ack.vim to use ripgrep. Note that we're searching hidden
   " directories, but not inside `.git`
-  let g:ackprg = "rg --vimgrep --no-heading --smart-case "
+  let g:ackprg = 'rg --vimgrep --no-heading --smart-case '
   let g:ackprg .= "--no-ignore --hidden --follow -g '!.git/*'"
 
   " Set the grep program to use ripgrep
@@ -402,7 +402,7 @@ let g:go_highlight_fields = 1
 
 " Clear the background color in Termite or a 256 color term to get transparent
 " background
-if &term == "xterm-termite" || match(&term, "-256color$") != -1
+if &term ==? 'xterm-termite' || match(&term, '-256color$') != -1
   highlight Normal ctermbg=NONE
 endif
 
