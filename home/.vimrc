@@ -417,4 +417,3 @@ endif
 " - [[https://github.com/booyaa/rustlangserver.github.io]]
 " - [[https://github.com/leafgarland/vimfiles/blob/master/.vimrc]]
 " - [[http://seenaburns.com/vim-setup-for-rust/]]
-
