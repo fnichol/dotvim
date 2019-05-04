@@ -12,6 +12,7 @@ set modelines=0                   " prevent possible exploits in modelines
 let mapleader=","
 
 set encoding=utf-8                " sets the character encoding used inside Vim
+scriptencoding utf-8
 
 set showcmd                       " display incomplete commands
 set showmode                      " display your current mode
