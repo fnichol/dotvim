@@ -47,25 +47,25 @@ function! rust#detect#RustfmtComponent() abort
 endfunction
 
 function! rust#detect#DetectRustupComponent(component) abort
-  let l:var = substitute(a:component, '-', '_', 'g')
+  let l:var = 'rust_rustup_component_installed_'
+  let l:var .= substitute(a:component, '-', '_', 'g')
 
-  if !exists('g:rust_rustup_component_installed_' . l:var)
-    exec 'let g:rust_rustup_component_installed_' . l:var .
-          \ ' = s:active_component_installed(a:component)'
+  if !exists('g:' . l:var)
+    let g:[l:var] = s:active_component_installed(a:component)
   endif
 
-  exec 'return g:rust_rustup_component_installed_' . l:var
+  return g:[l:var]
 endfunction
 
 function! rust#detect#DetectRustupToolchain(toolchain) abort
-  let l:var = substitute(a:toolchain, '-', '_', 'g')
+  let l:var = 'rust_rustup_toolchain_installed_'
+  let l:var .= substitute(a:toolchain, '-', '_', 'g')
 
-  if !exists('g:rust_rustup_toolchain_installed_' . l:var)
-    exec 'let g:rust_rustup_toolchain_installed_' . l:var .
-          \ ' = s:default_target_toolchain_installed(a:toolchain)'
+  if !exists('g:' . l:var)
+    let g:[l:var] = s:default_target_toolchain_installed(a:toolchain)
   endif
 
-  exec 'return g:rust_rustup_toolchain_installed_' . l:var
+  return g:[l:var]
 endfunction
 
 function! rust#detect#DetectRls() abort

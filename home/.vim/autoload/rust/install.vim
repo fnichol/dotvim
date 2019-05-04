@@ -29,9 +29,10 @@ function! s:rustup_component_add(component) abort
 
   execute 'silent !rustup component add ' . a:component
 
-  let l:var = substitute(a:component, '-', '_', 'g')
-  if exists('g:rust_rustup_component_installed_' . l:var)
-    exec 'unlet g:rust_rustup_component_installed_' . l:var
+  let l:var = 'rust_rustup_component_installed_'
+  let l:var .= substitute(a:component, '-', '_', 'g')
+  if exists('g:' . l:var)
+    unlet g:[l:var]
   endif
 
   if rust#detect#DetectRustupComponent(a:component)
@@ -68,9 +69,10 @@ function! s:rustup_toolchain_install(toolchain) abort
 
   execute 'silent !rustup toolchain install ' . a:toolchain
 
-  let l:var = substitute(a:toolchain, '-', '_', 'g')
-  if exists('g:rust_rustup_toolchain_installed_' . l:var)
-    exec 'unlet g:rust_rustup_toolchain_installed_' . l:var
+  let l:var = 'rust_rustup_toolchain_installed_'
+  let l:var .= substitute(a:toolchain, '-', '_', 'g')
+  if exists('g:' . l:var)
+    unlet g:[l:var]
   endif
 
   if rust#detect#DetectRustupToolchain(a:toolchain)
