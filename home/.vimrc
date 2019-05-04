@@ -111,17 +111,17 @@ set background=dark               " blue on black background sucks
 let s:theme = 'base16-twilight'   " Color scheme to set
 
 function! s:InstallPluginManager()
-  let plug_src = 'https://github.com/junegunn/vim-plug.git'
+  let l:plug_src = 'https://github.com/junegunn/vim-plug.git'
 
   echo 'Installing plugin manager...'
   echo ''
-  let tmpdir = tempname()
+  let l:tmpdir = tempname()
   try
     silent !mkdir -p ~/.vim/autoload
-    execute 'silent !git clone --depth 1 ' . plug_src . ' ' . tmpdir
-    execute 'silent !mv ' . tmpdir . '/plug.vim ~/.vim/autoload/plug.vim'
+    execute 'silent !git clone --depth 1 ' . l:plug_src . ' ' . l:tmpdir
+    execute 'silent !mv ' . l:tmpdir . '/plug.vim ~/.vim/autoload/plug.vim'
   finally
-    execute 'silent !rm -rf ' . tmpdir
+    execute 'silent !rm -rf ' . l:tmpdir
   endtry
 endfunction
 
