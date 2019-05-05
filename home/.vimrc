@@ -4,6 +4,7 @@ augroup vimrc
   autocmd!
 augroup END
 
+" vint: -ProhibitSetNoCompatible
 set nocompatible                  " don't make vim vi-compatible (better)
 
 set modelines=0                   " prevent possible exploits in modelines
