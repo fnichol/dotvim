@@ -1,4 +1,4 @@
-VIM_SRC := $(shell find . -type f -name '*.vim')
+VIM_SRC := $(shell find . -type f -name '*.vim' -o -name '.vimrc')
 CHECK_TOOLS = vint
 
 prepush: check ## Runs all checks/test required before pushing
