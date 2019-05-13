@@ -12,6 +12,7 @@ endif
 
 if prettier#detect#Detect()
   let b:ale_fixers += ['prettier']
+  let b:ale_javascript_prettier_options = '--parser markdown'
 else
   command! -nargs=0 -bar InstallPrettier call prettier#install#Install()
 endif
