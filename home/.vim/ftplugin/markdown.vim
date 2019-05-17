@@ -16,3 +16,10 @@ if prettier#detect#Detect()
 else
   command! -nargs=0 -bar InstallPrettier call prettier#install#Install()
 endif
+
+let g:markdown_composer_autostart = 0
+
+if !vim_markdown_composer#detect#Detect()
+  command! -nargs=0 -bar InstallVimMarkdownComposer
+        \ call vim_markdown_composer#install#Install()
+endif

@@ -38,6 +38,7 @@ endif
 " Plugins that require specific, newer versions of vim
 if v:version > 800
   Plug 'w0rp/ale'
+  Plug 'euclio/vim-markdown-composer'
 endif
 
 " Use fzf if vim is new enough and `fzf` is installed
