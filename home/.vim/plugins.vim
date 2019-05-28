@@ -27,7 +27,6 @@ Plug 'junegunn/limelight.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'uarun/vim-protobuf'
 Plug 'pangloss/vim-javascript'
-Plug 'Yggdroot/indentLine'
 Plug 'plasticboy/vim-markdown'
 
 " Plugins that require specific, newer versions of vim
@@ -49,4 +48,9 @@ if v:version >= 740 && executable('fzf')
   Plug 'junegunn/fzf.vim'
 else
   Plug 'ctrlpvim/ctrlp.vim'
+endif
+
+if has('unix') && systemlist('uname -s')[0] != 'FreeBSD'
+  " Use indentLine unless we're on FreeBSD
+  Plug 'Yggdroot/indentLine'
 endif
