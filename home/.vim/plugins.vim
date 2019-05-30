@@ -50,7 +50,7 @@ else
   Plug 'ctrlpvim/ctrlp.vim'
 endif
 
-if has('unix') && systemlist('uname -s')[0] != 'FreeBSD'
+if has('unix') && systemlist('uname -s')[0] !=? 'FreeBSD'
   " Use indentLine unless we're on FreeBSD
   Plug 'Yggdroot/indentLine'
 endif
