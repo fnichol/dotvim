@@ -2,6 +2,7 @@ VIM_SOURCES := $(shell find . -type f -name '*.vim' -o -name '.vimrc')
 CHECK_TOOLS += vint
 
 include vendor/mk/base.mk
+include vendor/mk/readme.mk
 
 build:
 .PHONY: build
