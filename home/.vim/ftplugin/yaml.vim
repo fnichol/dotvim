@@ -4,6 +4,8 @@ if exists('b:did_vimrc_ftplugin')
 endif
 let b:did_vimrc_ftplugin = 1
 
+setlocal colorcolumn=80
+
 if !exists('b:ale_fixers')
   let b:ale_fixers = []
 endif
