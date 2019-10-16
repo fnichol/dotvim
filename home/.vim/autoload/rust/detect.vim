@@ -1,7 +1,13 @@
 function! s:default_target() abort
-  return get(split(get(filter(systemlist(
-        \ 'rustup target list'), 'v:val =~? " (default)$"'), 0, ''), '\s\+'),
-        \ 0, '')
+  let l:active = rust#detect#RlsActiveToolchain()
+
+  " Use the current active toolchain to get a list of installed components, of
+  " which `rustc` should be installed. Knowing this, we'll strip off `rustc-`
+  " and what we're left with should be the full target triple of the active
+  " toolchain.
+  return substitute(get(filter(systemlist(
+        \ 'rustup component list --installed --toolchain '. l:active),
+        \ 'v:val =~? "^rustc-"'), 0, ''), 'rustc-', '', '')
 endfunction
 
 function! s:component_installed(toolchain, fq_component) abort
