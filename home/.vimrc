@@ -354,6 +354,8 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 " Auto-close the preview window when completion is done
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
+" Insert the current date (i.e. `YYYY-MM-DD`) in insert and command modes
+noremap! <leader>d <C-R>=strftime('%F')<CR>
 
 " disable JSON syntax concealing
 let g:vim_json_syntax_conceal = 0
