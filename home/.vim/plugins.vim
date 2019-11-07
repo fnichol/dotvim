@@ -22,6 +22,7 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'uarun/vim-protobuf'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 
 " Plugins that require specific, newer versions of vim
 if v:version > 704
