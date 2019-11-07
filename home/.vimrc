@@ -415,27 +415,32 @@ let g:go_highlight_fields = 1
 
 " " vimwiki Configuration
 
-" Setup a default wiki
-let default_wiki = {}
+" Setup the default 'brain' wiki
+let brain_wiki = {}
 " The path to the wiki files
-let default_wiki.path = '~/Documents/wiki/content'
+let brain_wiki.path = '~/Documents/wikis/brain/content'
 " Use Markdown syntax
-let default_wiki.syntax = 'markdown'
+let brain_wiki.syntax = 'markdown'
 " Use `.md` as the wiki file extension
-let default_wiki.ext = '.md'
+let brain_wiki.ext = '.md'
 " Use dashes for spaces when creating a new file from a link
-let default_wiki.links_space_char = '-'
+let brain_wiki.links_space_char = '-'
 " Update the table of contents section when the current page is saved
-let default_wiki.auto_toc = 1
+let brain_wiki.auto_toc = 1
 " Update the diary index when opened
-let default_wiki.auto_diary_index = 1
+let brain_wiki.auto_diary_index = 1
 " Name of the wiki page to be used for the Diary index (found in `diary/`)
-let default_wiki.diary_index = 'index'
+let brain_wiki.diary_index = 'index'
 " Set list of files to be excluded when checking or generating links
-let default_wiki.exclude_files = ['**/README.md']
+let brain_wiki.exclude_files = ['**/README.md']
+
+" Setup the public 'knowledge' wiki
+let knowledge_wiki = deepcopy(brain_wiki)
+" The path to the wiki files
+let knowledge_wiki.path = '~/Documents/wikis/knowledge/content'
 
 " Register the default wiki
-let g:vimwiki_list = [default_wiki]
+let g:vimwiki_list = [brain_wiki, knowledge_wiki]
 " Disable vimwiki mode for non-wiki markdown buffers
 let g:vimwiki_global_ext = 0
 " Generate a header when creating a new wiki page
