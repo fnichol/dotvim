@@ -41,7 +41,7 @@ set number                        " display line numbers
 set ruler                         " show cursor position
 
 set wrap                          " turn on line wrapping
-set scrolloff=3                   " show 3 lines of context around the cursor
+set scrolloff=0                   " show 3 lines of context around the cursor
 
 set title                         " set the terminal title
 
