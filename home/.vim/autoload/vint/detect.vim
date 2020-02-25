@@ -1,7 +1,15 @@
 function! vint#detect#Detect() abort
-  if !exists('g:vint_installed')
-    let g:vint_installed = executable('vint')
+  let l:var = 'vint_installed'
+  let l:buffer = bufnr('')
+
+  if !vimrc#buffer#Exists(l:var)
+    " Load language server linter
+    silent! runtime! ale_linters/vim/vint.vim
+
+    let l:is_found = executable('vint')
+
+    call vimrc#buffer#Set(l:buffer, l:var, l:is_found)
   end
 
-  return g:vint_installed
+  return vimrc#buffer#Var(l:buffer, l:var)
 endfunction

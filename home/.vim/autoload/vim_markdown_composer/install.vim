@@ -21,10 +21,7 @@ function! vim_markdown_composer#install#Install() abort
 
   if l:shell_error == 0
     delcommand InstallVimMarkdownComposer
-    if exists('g:vim_markdown_composer_installed')
-      " Clear any state for next install check
-      unlet g:vim_markdown_composer_installed
-    endif
+    call vimrc#buffer#Unset('vim_markdown_composer_installed')
     echom '[vim-markdown-composer] Installation complete.'
     return 1
   else

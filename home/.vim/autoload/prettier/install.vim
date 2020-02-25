@@ -12,10 +12,7 @@ function! prettier#install#Install() abort
   if v:shell_error == 0
     redraw!
     delcommand InstallPrettier
-    if exists('g:prettier_installed')
-      " Clear any state for next detect
-      unlet g:prettier_installed
-    endif
+    call vimrc#buffer#Unset('prettier_installed')
     echom '[prettier] Installation complete.'
     return 1
   else

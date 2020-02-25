@@ -7,15 +7,12 @@ function! vint#install#Install() abort
     return 0
   endif
 
-  execute 'silent !pip install vim-vint'
+  execute 'silent !pip install --user vim-vint'
 
   if v:shell_error == 0
     redraw!
     delcommand InstallVint
-    if exists('g:vint_installed')
-      " Clear any state for next detect
-      unlet g:vint_installed
-    endif
+    call vimrc#buffer#Unset('vint_installed')
     echom '[vint] Installation complete.'
     return 1
   else

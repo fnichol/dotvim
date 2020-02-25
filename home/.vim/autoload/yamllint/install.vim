@@ -12,10 +12,7 @@ function! yamllint#install#Install() abort
   if v:shell_error == 0
     redraw!
     delcommand InstallYamllint
-    if exists('g:yamllint_installed')
-      " Clear any state for next install check
-      unlet g:yamllint_installed
-    endif
+    call vimrc#buffer#Unset('yamllint_installed')
     echom '[yamllint] Installation complete.'
     return 1
   else

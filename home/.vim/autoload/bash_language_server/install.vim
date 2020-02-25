@@ -12,10 +12,7 @@ function! bash_language_server#install#Install() abort
   if v:shell_error == 0
     redraw!
     delcommand InstallBashLanguageServer
-    if exists('g:bash_language_server_installed')
-      " Clear any state for next install check
-      unlet g:bash_language_server_installed
-    endif
+    call vimrc#buffer#Unset('bash_language_server_installed')
     echom '[bash-language-server] Installation complete.'
     return 1
   else

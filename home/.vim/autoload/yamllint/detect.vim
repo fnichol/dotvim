@@ -1,7 +1,12 @@
 function! yamllint#detect#Detect() abort
-  if !exists('g:yamllint_installed')
-    let g:yamllint_installed = executable('yamllint')
+  let l:var = 'yamllint_installed'
+  let l:buffer = bufnr('')
+
+  if !vimrc#buffer#Exists(l:var)
+    let l:is_found = executable('yamllint')
+
+    call vimrc#buffer#Set(l:buffer, l:var, l:is_found)
   end
 
-  return g:yamllint_installed
+  return vimrc#buffer#Var(l:buffer, l:var)
 endfunction

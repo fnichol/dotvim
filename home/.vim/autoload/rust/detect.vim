@@ -32,12 +32,15 @@ function! s:default_target_toolchain_installed(short_toolchain) abort
 endfunction
 
 function! rust#detect#RlsActiveToolchain() abort
-  if !exists('g:rust_rls_active_toolchain')
-    let g:rust_rls_active_toolchain = get(split(system(
-          \ 'rustup show active-toolchain'), '\s\+'), 0, '')
+  let l:var = 'rust_rls_active_toolchain'
+  let l:buffer = bufnr('')
+
+  if !vimrc#buffer#Exists(l:var)
+    call vimrc#buffer#Set(l:buffer, l:var, get(split(system(
+          \ 'rustup show active-toolchain'), '\s\+'), 0, ''))
   endif
 
-  return g:rust_rls_active_toolchain
+  return vimrc#buffer#Var(l:buffer, l:var)
 endfunction
 
 function! rust#detect#RlsComponents() abort
@@ -55,41 +58,50 @@ endfunction
 function! rust#detect#DetectRustupComponent(component) abort
   let l:var = 'rust_rustup_component_installed_'
   let l:var .= substitute(a:component, '-', '_', 'g')
+  let l:buffer = bufnr('')
 
-  if !exists('g:' . l:var)
-    let g:[l:var] = s:active_component_installed(a:component)
+  if !vimrc#buffer#Exists(l:var)
+    let l:is_found = s:active_component_installed(a:component)
+
+    call vimrc#buffer#Set(l:buffer, l:var, l:is_found)
   endif
 
-  return g:[l:var]
+  return vimrc#buffer#Var(l:buffer, l:var)
 endfunction
 
 function! rust#detect#DetectRustupToolchain(toolchain) abort
   let l:var = 'rust_rustup_toolchain_installed_'
   let l:var .= substitute(a:toolchain, '-', '_', 'g')
+  let l:buffer = bufnr('')
 
-  if !exists('g:' . l:var)
-    let g:[l:var] = s:default_target_toolchain_installed(a:toolchain)
+  if !vimrc#buffer#Exists(l:var)
+    let l:is_found = s:default_target_toolchain_installed(a:toolchain)
+
+    call vimrc#buffer#Set(l:buffer, l:var, l:is_found)
   endif
 
-  return g:[l:var]
+  return vimrc#buffer#Var(l:buffer, l:var)
 endfunction
 
 function! rust#detect#DetectRls() abort
-  if !exists('g:rust_rls_installed')
+  let l:var = 'rust_rls_installed'
+  let l:buffer = bufnr('')
+
+  if !vimrc#buffer#Exists(l:var)
     for component in rust#detect#RlsComponents()
       if !rust#detect#DetectRustupComponent(component)
-        let g:rust_rls_installed = 0
-        return g:rust_rls_installed
+        call vimrc#buffer#Set(l:buffer, l:var, 0)
+        return vimrc#buffer#Var(l:buffer, l:var)
       endif
     endfor
 
     if !executable('racer')
-      let g:rust_rls_installed = 0
-      return g:rust_rls_installed
+      call vimrc#buffer#Set(l:buffer, l:var, 0)
+      return vimrc#buffer#Var(l:buffer, l:var)
     endif
 
-    let g:rust_rls_installed = 1
+    call vimrc#buffer#Set(l:buffer, l:var, 1)
   endif
 
-  return g:rust_rls_installed
+  return vimrc#buffer#Var(l:buffer, l:var)
 endfunction
