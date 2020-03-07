@@ -362,7 +362,7 @@ let g:vim_json_syntax_conceal = 0
 
 " set a nicer indent line character, if possible
 if (&encoding ==# 'utf-8' && &term isnot# 'linux')
-  let g:indentLine_char = '⸽'
+  let g:indentLine_char = '┆'
 endif
 
 " close the tree window after opening a file
