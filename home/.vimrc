@@ -111,6 +111,21 @@ set background=dark               " blue on black background sucks
 
 let s:theme = 'base16-twilight'   " Color scheme to set
 
+" Set terminal type for which mouse codes are recognized when running under
+" screen or tmux, or using the Alacritty terminal emulator
+if &term =~? '^screen' || &term =~? '^tmux' || &term ==? 'alacritty'
+  if has('mouse_sgr')
+    " Prefer the newer `sgr` mouse handling, if supported by vim
+    set ttymouse=sgr
+  else
+    " Otherwise fall back to `xterm2`
+    set ttymouse=xterm2
+  endif
+endif
+
+" Enable mouse support
+set mouse=a
+
 function! s:InstallPluginManager()
   let l:plug_src = 'https://github.com/junegunn/vim-plug.git'
 
