@@ -31,7 +31,7 @@ endif
 
 " Plugins that require specific, newer versions of vim
 if v:version > 800
-  Plug 'w0rp/ale'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'euclio/vim-markdown-composer'
 endif
 

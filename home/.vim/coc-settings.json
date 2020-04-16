@@ -1,0 +1,27 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "graphql",
+    "javascript",
+    "json",
+    "jsonc",
+    "markdown",
+    "rust",
+    "sh",
+    "typescript",
+    "yaml"
+  ],
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck",
+    "vim": "vint"
+  },
+  "diagnostic-languageserver.formatters": {
+    "shfmt": {
+      "command": "shfmt",
+      "args": ["-i", "2", "-bn", "-ci", "-bn"]
+    }
+  },
+  "diagnostic-languageserver.formatFiletypes": {
+    "sh": "shfmt"
+  }
+}

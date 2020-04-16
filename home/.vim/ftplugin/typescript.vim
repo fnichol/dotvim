@@ -8,13 +8,3 @@ let b:did_vimrc_ftplugin = 1
 " Prettier to an extent, knowing when a line is longer than 100 characters is
 " still useful
 setlocal colorcolumn=100
-
-if !exists('b:ale_fixers')
-  let b:ale_fixers = []
-endif
-
-if prettier#detect#Detect()
-  let b:ale_fixers += ['prettier']
-else
-  command! -nargs=0 -bar InstallPrettier call prettier#install#Install()
-endif

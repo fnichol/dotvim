@@ -45,6 +45,8 @@ set scrolloff=0                   " show 3 lines of context around the cursor
 
 set title                         " set the terminal title
 
+set cmdheight=2                   " give more space for displaying messages
+
 set visualbell                    " no beeping
 
 set nobackup                       " don't make backup before overwriting file
@@ -60,6 +62,12 @@ set softtabstop=2                 " number of spaces that using <Tab> counts for
 set expandtab                     " use spaces instead of tabs
 
 set list                          " display unprintable characters
+
+set updatetime=300                " longer update times leads to noticeable
+                                  " delays and poor user experience
+                                  " (used by coc.nvim)
+set shortmess+=c                  " don't pass messages to ins-completion-menu
+                                  " (used by coc.nvim)
 
 " setting display chars for tab and eol
 if (&encoding ==# 'utf-8' && &term isnot# 'linux')
@@ -104,8 +112,29 @@ vmap <Tab> >gv
 vmap <S-Tab> <gv
 
 set laststatus=2                  " always show status line
-                                  " status line info at bottom of screen
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+
+function! StatusLineCoc()
+  let l:status = coc#status()
+  return strlen(l:status) > 0 ? ' {' . l:status . '}' : ''
+endfunction
+
+" Set the status line info at bottom of screen
+set statusline=
+" Buffer number
+set statusline+=[%n]
+" Path to the file in the buffer
+set statusline+=\ %<%.99f
+" Buffer flags: help buffer, preview window, modified, read-only, file type
+set statusline+=\ %h%w%m%r%y
+" coc.nvim status, if installed and activated
+set statusline+=%{exists('*coc#status')?StatusLineCoc():''}
+set statusline+=\ %{get(b:,'coc_current_function','')}
+" Separation point between left and right aligned items
+set statusline+=%=
+" Cursor location: line number, column number, virtual column number
+set statusline+=%-16(\ %l,%c-%v\ %)
+" Percentage through the file
+set statusline+=%P
 
 set background=dark               " blue on black background sucks
 
@@ -286,89 +315,6 @@ if !exists('g:plugs')
   finish
 endif
 
-" ALE linter configuration
-
-" Map leader a to manually run ALE lint
-map <leader>a :ALELint<CR>
-
-" Disable all highlighting of warnings and errors
-let g:ale_set_highlights = 0
-
-" Disable all other automatic linting runs and rely on the manual linting
-" exclusively instead
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save = 0
-let g:ale_lint_on_filtype_changed = 0
-
-" Initialize the ALE fixers dictionary
-let g:ale_fixers = {}
-let g:ale_fix_on_save = 1
-
-" Toggle code completion on and off
-function! ToggleALECompletion()
-  if g:ale_completion_enabled
-    call ale#completion#Disable()
-    echo '[toggle] ALE completion disabled (-)'
-  else
-    call ale#completion#Enable()
-    echo '[toggle] ALE completion enabled (+)'
-  endif
-endfunction
-" Map leader tc to toggle code completion on and off
-nmap <leader>tc :call ToggleALECompletion()<CR>
-
-" Check the status of code completion
-function! StatusALECompletion()
-  if g:ale_completion_enabled
-    echo '[status] ALE completion enabled (+)'
-  else
-    echo '[status] ALE completion disabled (-)'
-  endif
-endfunction
-" Map leader sc to check the status of code completion
-nmap <leader>sc :call StatusALECompletion()<CR>
-
-" Toggle fix-on-save on and off
-function! ToggleALEFixOnSave()
-  if g:ale_fix_on_save
-    let g:ale_fix_on_save = 0
-    echo '[toggle] ALE fix-on-save disabled (-)'
-  else
-    let g:ale_fix_on_save = 1
-    echo '[toggle] ALE fix-on-save enabled (+)'
-  endif
-endfunction
-" Map leader tc to toggle fix-on-save on and off
-nmap <leader>tf :call ToggleALEFixOnSave()<CR>
-
-" Check the status of fix-on-save
-function! StatusALEFixOnSave()
-  if g:ale_fix_on_save
-    echo '[status] ALE fix-on-save enabled (+)'
-  else
-    echo '[status] ALE fix-on-save disabled (-)'
-  endif
-endfunction
-" Map leader sc to check the status of fix-on-save
-nmap <leader>sf :call StatusALEFixOnSave()<CR>
-
-" Map `Ctrl+i` to hover
-map <C-i> :ALEHover<cr>
-" Map `g] to go to definition
-nnoremap g] :ALEGoToDefinition<cr>
-
-" `Tab` key press calls `Ctrl+n` only if the completion window is visible
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" `Shift+Tab` key press calls `Ctrl+n` only if the completion window is
-" visible
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" `Retrun` key press calls `Ctrl+y` only if the completion window is visible
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-
-" Auto-close the preview window when completion is done
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
 " Insert the current date (i.e. `YYYY-MM-DD`) in insert and command modes
 noremap! <leader>d <C-R>=strftime('%F')<CR>
 
@@ -492,3 +438,5 @@ endif
 " - [[https://github.com/booyaa/rustlangserver.github.io]]
 " - [[https://github.com/leafgarland/vimfiles/blob/master/.vimrc]]
 " - [[http://seenaburns.com/vim-setup-for-rust/]]
+" - [[https://learnvimscriptthehardway.stevelosh.com/chapters/17.html]]
+" - [[https://shapeshed.com/vim-statuslines/]]
