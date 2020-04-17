@@ -1,4 +1,4 @@
-if exists('g:did_vimrc_coc_loaded') || v:version < 800 || !exists('g:plugs')
+if exists('g:did_vimrc_coc_loaded') || !exists('g:plugs["coc.nvim"]')
   finish
 endif
 let g:did_vimrc_coc_loaded = 1
