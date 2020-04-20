@@ -23,5 +23,6 @@
   },
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
-  }
+  },
+  "rust-analyzer.cargo.loadOutDirsFromCheck": true
 }
