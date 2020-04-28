@@ -307,16 +307,6 @@ if executable('rg')
         \ --no-ignore\ --hidden\ --follow\ -g\ '!.git/*'
 endif
 
-" Disable Markdown code folding
-let g:vim_markdown_folding_disabled = 1
-" Disable Markdown syntax concealing
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-" Highlight Markdown YAML front matter
-let g:vim_markdown_frontmatter = 1
-" Highlight Markdown TOML front matter
-let g:vim_markdown_toml_frontmatter = 1
-
 " Exclude `nerdtree` filetypes from indent behavior
 let g:indentLine_fileTypeExclude = ['nerdtree']
 
