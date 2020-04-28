@@ -6,19 +6,8 @@ let g:did_vimrc_coc_loaded = 1
 " Disable Coc at startup
 let g:coc_start_at_startup = 0
 
-let g:coc_global_extensions = [
-      \'coc-diagnostic',
-      \'coc-eslint',
-      \'coc-go',
-      \'coc-html',
-      \'coc-json',
-      \'coc-prettier',
-      \'coc-rust-analyzer',
-      \'coc-sh',
-      \'coc-tsserver',
-      \'coc-vimlsp',
-      \'coc-yaml',
-      \]
+" Declare Coc global extensions which will be automatically installed
+call vimrc#coc#Load('~/.vim/coc-extensions.vim')
 
 " Some servers have issues with backup files, see
 " https://github.com/neoclide/coc.nvim/issues/649
