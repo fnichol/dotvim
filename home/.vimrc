@@ -234,11 +234,6 @@ noremap! <leader>d <C-R>=strftime('%F')<CR>
 " disable JSON syntax concealing
 let g:vim_json_syntax_conceal = 0
 
-" set a nicer indent line character, if possible
-if (&encoding ==# 'utf-8' && &term isnot# 'linux')
-  let g:indentLine_char = '┆'
-endif
-
 " close the tree window after opening a file
 let g:NERDTreeQuitOnOpen = 1
 
@@ -269,9 +264,6 @@ if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\
         \ --no-ignore\ --hidden\ --follow\ -g\ '!.git/*'
 endif
-
-" Exclude `nerdtree` filetypes from indent behavior
-let g:indentLine_fileTypeExclude = ['nerdtree']
 
 " Clear the background color in Termite or a 256 color term to get transparent
 " background
