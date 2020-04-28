@@ -207,14 +207,6 @@ elseif v:version >= 600
   colorscheme vividchalk            " set color theme
 endif
 
-" Assume that filtype=sh are posix and therefore will support proper `$(...)`
-" syntax highlighting.
-"
-" See:
-" * https://git.io/fjngy
-" * https://github.com/tpope/vim-sensible/issues/140
-let g:is_posix = 1
-
 " The remaining configuration is for loaded plugins, so if the plugin manager
 " isn't loaded, exit early
 if !exists('g:plugs')
