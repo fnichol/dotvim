@@ -1,3 +1,8 @@
+if exists('g:did_vimrc_spell_loaded')
+  finish
+endif
+let g:did_vimrc_spell_loaded = 1
+
 " Spelling
 
 " Set spellchecking languages to be used in priority order

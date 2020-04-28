@@ -1,7 +1,7 @@
-if exists('g:did_vimrc_vim_go_loaded') || !exists('g:plugs["vim-go"]')
+if exists('g:did_vimrc_go_loaded') || !exists('g:plugs["vim-go"]')
   finish
 endif
-let g:did_vimrc_vim_go_loaded = 1
+let g:did_vimrc_go_loaded = 1
 
 " Enable a bit more syntax highlighting for Go code
 let g:go_highlight_types = 1
