@@ -20,30 +20,6 @@ let g:coc_global_extensions = [
       \'coc-yaml',
       \]
 
-" Toggle code completion on and off
-function! ToggleCocCompletion()
-  if coc#client#is_running('coc')
-    call coc#rpc#stop()
-    echo '[toggle] coc.nvim completion disabled (-)'
-  else
-    call coc#rpc#start_server()
-    echo '[toggle] coc.nvim completion enabled (+)'
-  endif
-endfunction
-" Map leader tc to toggle code completion on and off
-nmap <leader>tc :call ToggleCocCompletion()<CR>
-
-" Check the status of code completion
-function! StatusCocCompletion()
-  if coc#client#is_running('coc')
-    echo '[status] coc.nvim completion enabled (+)'
-  else
-    echo '[status] coc.nvim completion disabled (-)'
-  endif
-endfunction
-" Map leader sc to check the status of code completion
-nmap <leader>sc :call StatusCocCompletion()<CR>
-
 " Some servers have issues with backup files, see
 " https://github.com/neoclide/coc.nvim/issues/649
 set nobackup
@@ -150,3 +126,12 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+
+" Check the status of code completion
+command! -nargs=0 -bar StatusCocCompletion :call vimrc#coc#StatusCocCompletion()
+" Map leader sc to check the status of code completion
+nmap <leader>sc :StatusCocCompletion<CR>
+" Toggle code completion on and off
+command! -nargs=0 -bar ToggleCocCompletion :call vimrc#coc#ToggleCocCompletion()
+" Map leader tc to toggle code completion on and off
+nmap <leader>tc :ToggleCocCompletion<CR>
