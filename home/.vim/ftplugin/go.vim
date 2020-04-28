@@ -21,3 +21,8 @@ setlocal tabstop=8
 setlocal shiftwidth=8
 setlocal softtabstop=8
 setlocal noexpandtab
+
+" Check the status of vim-go's gopls
+command! -nargs=0 -bar -buffer StatusGopls call vimrc#go#StatusGopls()
+" Toggle vim-go's gopls on and off
+command! -nargs=0 -bar -buffer ToggleGopls call vimrc#go#ToggleGopls()
