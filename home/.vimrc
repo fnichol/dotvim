@@ -370,10 +370,6 @@ let g:vim_markdown_toml_frontmatter = 1
 " Exclude `nerdtree` filetypes from indent behavior
 let g:indentLine_fileTypeExclude = ['nerdtree']
 
-" Enable a bit more syntax highlighting for Go code
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-
 " " vimwiki Configuration
 
 " Setup the default 'brain' wiki
