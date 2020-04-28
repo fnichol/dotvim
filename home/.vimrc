@@ -122,7 +122,7 @@ endif
 " Enable mouse support
 set mouse=a
 
-call vimrc#plug#Load()
+call vimrc#plug#Load('~/.vim/plugins.vim')
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.

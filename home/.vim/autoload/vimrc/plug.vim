@@ -1,4 +1,4 @@
-function! vimrc#plug#Load() abort
+function! vimrc#plug#Load(source_file) abort
   if has('user_commands') && v:version >= 700 && executable('git')
     " Install plugin manager if not installed
     if filereadable(expand('~/.vim/autoload/plug.vim'))
@@ -10,8 +10,8 @@ function! vimrc#plug#Load() abort
 
     " Load plugins
     call plug#begin()
-    if filereadable(expand('~/.vim/plugins.vim'))
-      source ~/.vim/plugins.vim
+    if filereadable(expand(a:source_file))
+      execute "source " . expand(a:source_file)
     endif
     call plug#end()
 
