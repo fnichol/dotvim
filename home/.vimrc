@@ -87,9 +87,6 @@ nnoremap <C-l> <C-w>l
 " opens new vert split and switch over to it
 map <leader>w <C-w>v<C-w>l
 
-" map leader d to NERDTreeToggle (show/hide drawer)
-map <leader>d :NERDTreeToggle<cr>
-
 " Strip trailing whitespace on lines
 map <leader>ws :%s/ *$//g<cr><c-o><cr>
 
@@ -195,6 +192,9 @@ noremap! <leader>d <C-R>=strftime('%F')<CR>
 
 " close the tree window after opening a file
 let g:NERDTreeQuitOnOpen = 1
+
+" map leader d to NERDTreeToggle (show/hide drawer)
+map <leader>d :NERDTreeToggle<cr>
 
 " enable extended % matching for HTML, LaTeX, and many other languages
 runtime macros/matchit.vim
