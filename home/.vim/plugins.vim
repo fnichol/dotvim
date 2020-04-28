@@ -31,11 +31,22 @@ endif
 
 " Plugins that require specific, newer versions of vim
 if v:version > 800
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'euclio/vim-markdown-composer'
 endif
 
-" Use fzf if vim is new enough and `fzf` is installed
+" Use `coc.nvim` if Vim version support it and if `node` is installed
+if v:version > 800 && executable('node')
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+else
+  let s:msg = "Node not found on system or Vim is too old. "
+  let s:msg .= "Please ensure pre-requisites are met and re-launch Vim."
+  command! -nargs=0 -bar StatusCoc :call vimrc#ErrorMsg("coc.nvim", s:msg)
+  nmap <leader>sc :StatusCoc<CR>
+  command! -nargs=0 -bar ToggleCoc :call vimrc#ErrorMsg("coc.nvim", s:msg)
+  nmap <leader>tc :ToggleCoc<CR>
+endif
+
+" Use `fzf` if Vim version supports it and if `fzf` is installed
 if v:version >= 740 && executable('fzf')
   " The install script with `--bin` should detect the system installed program
   " and produce a symlink at `~/.vim/plugged/fzf/bin/fzf`
@@ -45,7 +56,7 @@ else
   Plug 'ctrlpvim/ctrlp.vim'
 endif
 
+" Use `indentLine` unless we're on FreeBSD
 if has('unix') && systemlist('uname -s')[0] !=? 'FreeBSD'
-  " Use indentLine unless we're on FreeBSD
   Plug 'Yggdroot/indentLine'
 endif

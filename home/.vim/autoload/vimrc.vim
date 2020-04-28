@@ -8,3 +8,9 @@ endfunction
 function! vimrc#VarName(variable_name) abort
   return 'vimrc_' . a:variable_name
 endfunction
+
+function! vimrc#ErrorMsg(topic, msg) abort
+    echohl ErrorMsg
+    echo '[' . a:topic . '] ' . a:msg
+    echohl None
+endfunction
