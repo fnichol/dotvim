@@ -9,6 +9,7 @@ let g:coc_start_at_startup = 0
 let g:coc_global_extensions = [
       \'coc-diagnostic',
       \'coc-eslint',
+      \'coc-go',
       \'coc-html',
       \'coc-json',
       \'coc-prettier',
