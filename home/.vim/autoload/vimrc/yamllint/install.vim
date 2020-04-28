@@ -1,4 +1,4 @@
-function! yamllint#install#Install() abort
+function! vimrc#yamllint#install#Install() abort
   if !executable('pip3')
     echohl ErrorMsg
     echo '[yamllint] ' .

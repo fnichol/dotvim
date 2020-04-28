@@ -1,4 +1,4 @@
-function! vim_markdown_composer#detect#Detect() abort
+function! vimrc#vim_markdown_composer#detect#Detect() abort
   let l:var = 'vim_markdown_composer_installed'
   let l:buffer = bufnr('')
 

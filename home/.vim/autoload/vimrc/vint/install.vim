@@ -1,4 +1,4 @@
-function! vint#install#Install() abort
+function! vimrc#vint#install#Install() abort
   if !executable('pip')
     echohl ErrorMsg
     echo '[vint] ' .

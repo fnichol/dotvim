@@ -1,4 +1,4 @@
-function! yamllint#detect#Detect() abort
+function! vimrc#yamllint#detect#Detect() abort
   let l:var = 'yamllint_installed'
   let l:buffer = bufnr('')
 

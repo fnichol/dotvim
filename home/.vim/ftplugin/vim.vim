@@ -6,6 +6,6 @@ let b:did_vimrc_ftplugin = 1
 
 setlocal colorcolumn=80
 
-if !vint#detect#Detect()
-  command! -nargs=0 -bar InstallVint call vint#install#Install()
+if !vimrc#vint#detect#Detect()
+  command! -nargs=0 -bar -buffer InstallVint call vimrc#vint#install#Install()
 endif

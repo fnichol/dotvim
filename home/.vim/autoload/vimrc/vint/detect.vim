@@ -1,4 +1,4 @@
-function! vint#detect#Detect() abort
+function! vimrc#vint#detect#Detect() abort
   let l:var = 'vint_installed'
   let l:buffer = bufnr('')
 

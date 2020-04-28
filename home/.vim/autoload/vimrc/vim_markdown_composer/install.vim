@@ -1,4 +1,4 @@
-function! vim_markdown_composer#install#Install() abort
+function! vimrc#vim_markdown_composer#install#Install() abort
   if !executable('cargo')
     echohl ErrorMsg
     echo '[vim-markdown-composer] ' .
