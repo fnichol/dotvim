@@ -1,5 +1,6 @@
 CocExtension 'coc-diagnostic'
 CocExtension 'coc-eslint'
+CocExtension 'coc-explorer'
 CocExtension 'coc-go'
 CocExtension 'coc-html'
 CocExtension 'coc-json'

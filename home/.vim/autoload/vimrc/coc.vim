@@ -10,9 +10,14 @@ function! vimrc#coc#Load(source_file) abort
   endif
 endfunction
 
+" Determines whether or not coc.nvim is running
+function! vimrc#coc#IsRunning() abort
+  return exists('*coc#client#is_running') && coc#client#is_running('coc')
+endfunction
+
 " Check the status of code completion
 function! vimrc#coc#StatusCocCompletion() abort
-  if coc#client#is_running('coc')
+  if vimrc#coc#IsRunning()
     echo '[status] coc.nvim completion enabled (+)'
   else
     echo '[status] coc.nvim completion disabled (-)'
@@ -23,15 +28,50 @@ endfunction
 function! vimrc#coc#ToggleCocCompletion() abort
   if coc#client#is_running('coc')
     call coc#rpc#stop()
+    if exists('g:vimrc_coc_stop_callbacks')
+      for func in g:vimrc_coc_stop_callbacks
+        execute "call " . func . '()'
+      endfo
+    endif
     echo '[toggle] coc.nvim completion disabled (-)'
   else
     call coc#rpc#start_server()
+    if exists('g:vimrc_coc_start_callbacks')
+      for func in g:vimrc_coc_start_callbacks
+        execute "call " . func . '()'
+      endfo
+    endif
     echo '[toggle] coc.nvim completion enabled (+)'
   endif
 endfunction
 
+" Determines whether or not an extension is in the global extensions
+function! vimrc#coc#DetectExtension(extension) abort
+  return index(g:coc_global_extensions, a:extension) >= 0
+endfunction
+
+function! vimrc#coc#RegisterStartCallback(func) abort
+  if !exists('g:vimrc_coc_start_callbacks')
+    let g:vimrc_coc_start_callbacks = []
+  endif
+
+  if !(index(g:vimrc_coc_start_callbacks, a:func) >= 0)
+    call add(g:vimrc_coc_start_callbacks, a:func)
+  endif
+endfunction
+
+function! vimrc#coc#RegisterStopCallback(func) abort
+  if !exists('g:vimrc_coc_stop_callbacks')
+    let g:vimrc_coc_stop_callbacks = []
+  endif
+
+  if !(index(g:vimrc_coc_stop_callbacks, a:func) >= 0)
+    call add(g:vimrc_coc_stop_callbacks, a:func)
+  endif
+endfunction
+
 function! s:coc_extension(extension)
-  if !(index(g:coc_global_extensions, a:extension) >= 0)
+  if !vimrc#coc#DetectExtension(a:extension)
     call add(g:coc_global_extensions, a:extension)
   endif
 endfunction

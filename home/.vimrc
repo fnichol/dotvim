@@ -190,12 +190,6 @@ endif
 " Insert the current date (i.e. `YYYY-MM-DD`) in insert and command modes
 noremap! <leader>d <C-R>=strftime('%F')<CR>
 
-" close the tree window after opening a file
-let g:NERDTreeQuitOnOpen = 1
-
-" map leader d to NERDTreeToggle (show/hide drawer)
-map <leader>d :NERDTreeToggle<cr>
-
 " enable extended % matching for HTML, LaTeX, and many other languages
 runtime macros/matchit.vim
 
