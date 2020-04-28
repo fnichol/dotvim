@@ -1,5 +1,5 @@
 function! s:default_target() abort
-  let l:active = rust#detect#RlsActiveToolchain()
+  let l:active = vimrc#rust#detect#RlsActiveToolchain()
 
   " Use the current active toolchain to get a list of installed components, of
   " which `rustc` should be installed. Knowing this, we'll strip off `rustc-`
@@ -17,7 +17,7 @@ function! s:component_installed(toolchain, fq_component) abort
 endfunction
 
 function! s:active_component_installed(component) abort
-  return s:component_installed(rust#detect#RlsActiveToolchain(),
+  return s:component_installed(vimrc#rust#detect#RlsActiveToolchain(),
         \ a:component ==? 'rust-src'
         \ ? a:component
         \ : a:component . '-' . s:default_target())
@@ -31,7 +31,7 @@ function! s:default_target_toolchain_installed(short_toolchain) abort
         \ a:short_toolchain . '-' . s:default_target()) >= 0
 endfunction
 
-function! rust#detect#RlsActiveToolchain() abort
+function! vimrc#rust#detect#RlsActiveToolchain() abort
   let l:var = 'rust_rls_active_toolchain'
   let l:buffer = bufnr('')
 
@@ -43,19 +43,19 @@ function! rust#detect#RlsActiveToolchain() abort
   return vimrc#buffer#Var(l:buffer, l:var)
 endfunction
 
-function! rust#detect#RlsComponents() abort
+function! vimrc#rust#detect#RlsComponents() abort
   return ['rls', 'rust-analysis', 'rust-src']
 endfunction
 
-function! rust#detect#ClippyComponent() abort
+function! vimrc#rust#detect#ClippyComponent() abort
   return 'clippy'
 endfunction
 
-function! rust#detect#RustfmtComponent() abort
+function! vimrc#rust#detect#RustfmtComponent() abort
   return 'rustfmt'
 endfunction
 
-function! rust#detect#DetectRustupComponent(component) abort
+function! vimrc#rust#detect#DetectRustupComponent(component) abort
   let l:var = 'rust_rustup_component_installed_'
   let l:var .= substitute(a:component, '-', '_', 'g')
   let l:buffer = bufnr('')
@@ -69,7 +69,7 @@ function! rust#detect#DetectRustupComponent(component) abort
   return vimrc#buffer#Var(l:buffer, l:var)
 endfunction
 
-function! rust#detect#DetectRustupToolchain(toolchain) abort
+function! vimrc#rust#detect#DetectRustupToolchain(toolchain) abort
   let l:var = 'rust_rustup_toolchain_installed_'
   let l:var .= substitute(a:toolchain, '-', '_', 'g')
   let l:buffer = bufnr('')
@@ -83,13 +83,13 @@ function! rust#detect#DetectRustupToolchain(toolchain) abort
   return vimrc#buffer#Var(l:buffer, l:var)
 endfunction
 
-function! rust#detect#DetectRls() abort
+function! vimrc#rust#detect#DetectRls() abort
   let l:var = 'rust_rls_installed'
   let l:buffer = bufnr('')
 
   if !vimrc#buffer#Exists(l:var)
-    for component in rust#detect#RlsComponents()
-      if !rust#detect#DetectRustupComponent(component)
+    for component in vimrc#rust#detect#RlsComponents()
+      if !vimrc#rust#detect#DetectRustupComponent(component)
         call vimrc#buffer#Set(l:buffer, l:var, 0)
         return vimrc#buffer#Var(l:buffer, l:var)
       endif

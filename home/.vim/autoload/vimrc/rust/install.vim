@@ -35,7 +35,7 @@ function! s:rustup_component_add(component) abort
     unlet g:[l:var]
   endif
 
-  if rust#detect#DetectRustupComponent(a:component)
+  if vimrc#rust#detect#DetectRustupComponent(a:component)
     redraw!
     return 1
   else
@@ -52,7 +52,7 @@ function! s:cargo_nightly_install(name) abort
     return 0
   endif
 
-  if !rust#detect#DetectRustupToolchain('nightly')
+  if !vimrc#rust#detect#DetectRustupToolchain('nightly')
     if !s:rustup_toolchain_install('nightly')
       return 0
     endif
@@ -75,7 +75,7 @@ function! s:rustup_toolchain_install(toolchain) abort
     unlet g:[l:var]
   endif
 
-  if rust#detect#DetectRustupToolchain(a:toolchain)
+  if vimrc#rust#detect#DetectRustupToolchain(a:toolchain)
     redraw!
     return 1
   else
@@ -87,8 +87,8 @@ function! s:rustup_toolchain_install(toolchain) abort
   endif
 endfunction
 
-function! rust#install#InstallClippy() abort
-  let l:component = rust#detect#ClippyComponent()
+function! vimrc#rust#install#InstallClippy() abort
+  let l:component = vimrc#rust#detect#ClippyComponent()
   if s:rustup_component_add(l:component)
     " Remove command
     delcommand InstallClippy
@@ -96,8 +96,8 @@ function! rust#install#InstallClippy() abort
   endif
 endfunction
 
-function! rust#install#InstallRustfmt() abort
-  let l:component = rust#detect#RustfmtComponent()
+function! vimrc#rust#install#InstallRustfmt() abort
+  let l:component = vimrc#rust#detect#RustfmtComponent()
   if s:rustup_component_add(l:component)
     " Remove command
     delcommand InstallRustfmt
@@ -105,13 +105,13 @@ function! rust#install#InstallRustfmt() abort
   endif
 endfunction
 
-function! rust#install#InstallRls() abort
+function! vimrc#rust#install#InstallRls() abort
   if s:rustup_is_missing('rls')
     return 0
   endif
 
-  for component in rust#detect#RlsComponents()
-    if !rust#detect#DetectRustupComponent(component)
+  for component in vimrc#rust#detect#RlsComponents()
+    if !vimrc#rust#detect#DetectRustupComponent(component)
       if !s:rustup_component_add(component)
         return 0
       endif
