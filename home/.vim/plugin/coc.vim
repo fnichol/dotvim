@@ -117,10 +117,10 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Check the status of code completion
-command! -nargs=0 -bar StatusCocCompletion :call vimrc#coc#StatusCocCompletion()
+command! -nargs=0 -bar StatusCoc :call vimrc#coc#StatusCoc()
 " Map leader sc to check the status of code completion
-nmap <leader>sc :StatusCocCompletion<CR>
+nmap <leader>sc :StatusCoc<CR>
 " Toggle code completion on and off
-command! -nargs=0 -bar ToggleCocCompletion :call vimrc#coc#ToggleCocCompletion()
+command! -nargs=0 -bar ToggleCoc :call vimrc#coc#ToggleCoc()
 " Map leader tc to toggle code completion on and off
-nmap <leader>tc :ToggleCocCompletion<CR>
+nmap <leader>tc :ToggleCoc<CR>

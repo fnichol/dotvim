@@ -16,7 +16,7 @@ function! vimrc#coc#IsRunning() abort
 endfunction
 
 " Check the status of code completion
-function! vimrc#coc#StatusCocCompletion() abort
+function! vimrc#coc#StatusCoc() abort
   if vimrc#coc#IsRunning()
     echo '[status] coc.nvim completion enabled (+)'
   else
@@ -25,7 +25,7 @@ function! vimrc#coc#StatusCocCompletion() abort
 endfunction
 
 " Toggle code completion on and off
-function! vimrc#coc#ToggleCocCompletion() abort
+function! vimrc#coc#ToggleCoc() abort
   if coc#client#is_running('coc')
     call coc#rpc#stop()
     if exists('g:vimrc_coc_stop_callbacks')
