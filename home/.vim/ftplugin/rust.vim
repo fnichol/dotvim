@@ -13,7 +13,8 @@ if vimrc#rust#detect#DetectRustupComponent(vimrc#rust#detect#RustfmtComponent())
   let b:rustfmt_autosave = 1
 else
   " Setup an `:InstallRustfmt` command if Rustfmt is not currently installed
-  command! -nargs=0 -bar InstallRustfmt call vimrc#rust#install#InstallRustfmt()
+  command! -nargs=0 -bar -buffer InstallRustfmt
+        \ call vimrc#rust#install#InstallRustfmt()
 endif
 
 " Check for Clippy
@@ -25,5 +26,6 @@ if vimrc#rust#detect#DetectRustupComponent(vimrc#rust#detect#ClippyComponent())
   " let b:ale_rust_cargo_use_clippy = 1
 else
   " Setup an `:InstallClippy` command if Clippy is not currently installed
-  command! -nargs=0 -bar InstallClippy call vimrc#rust#install#InstallClippy()
+  command! -nargs=0 -bar -buffer InstallClippy
+        \ call vimrc#rust#install#InstallClippy()
 endif
