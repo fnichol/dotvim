@@ -38,11 +38,11 @@ endif
 if v:version > 800 && executable('node')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 else
-  let s:msg = "Node not found on system or Vim is too old. "
-  let s:msg .= "Please ensure pre-requisites are met and re-launch Vim."
-  command! -nargs=0 -bar StatusCoc :call vimrc#ErrorMsg("coc.nvim", s:msg)
+  let s:msg = 'Node not found on system or Vim is too old. '
+  let s:msg .= 'Please ensure pre-requisites are met and re-launch Vim.'
+  command! -nargs=0 -bar StatusCoc :call vimrc#ErrorMsg('coc.nvim', s:msg)
   nmap <leader>sc :StatusCoc<CR>
-  command! -nargs=0 -bar ToggleCoc :call vimrc#ErrorMsg("coc.nvim", s:msg)
+  command! -nargs=0 -bar ToggleCoc :call vimrc#ErrorMsg('coc.nvim', s:msg)
   nmap <leader>tc :ToggleCoc<CR>
 endif
 

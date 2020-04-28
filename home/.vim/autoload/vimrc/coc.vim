@@ -5,7 +5,7 @@ function! vimrc#coc#Load(source_file) abort
 
   if filereadable(expand(a:source_file))
     command! -nargs=1 -bar CocExtension call s:coc_extension(<args>)
-    execute "source " . expand(a:source_file)
+    execute 'source ' . expand(a:source_file)
     delcommand CocExtension
   endif
 endfunction
@@ -30,7 +30,7 @@ function! vimrc#coc#ToggleCoc() abort
     call coc#rpc#stop()
     if exists('g:vimrc_coc_stop_callbacks')
       for func in g:vimrc_coc_stop_callbacks
-        execute "call " . func . '()'
+        execute 'call ' . func . '()'
       endfo
     endif
     echo '[toggle] coc.nvim completion disabled (-)'
@@ -38,7 +38,7 @@ function! vimrc#coc#ToggleCoc() abort
     call coc#rpc#start_server()
     if exists('g:vimrc_coc_start_callbacks')
       for func in g:vimrc_coc_start_callbacks
-        execute "call " . func . '()'
+        execute 'call ' . func . '()'
       endfo
     endif
     echo '[toggle] coc.nvim completion enabled (+)'
@@ -70,7 +70,7 @@ function! vimrc#coc#RegisterStopCallback(func) abort
   endif
 endfunction
 
-function! s:coc_extension(extension)
+function! s:coc_extension(extension) abort
   if !vimrc#coc#DetectExtension(a:extension)
     call add(g:coc_global_extensions, a:extension)
   endif

@@ -1,3 +1,5 @@
+" vint: -ProhibitMissingScriptEncoding
+
 if exists('g:did_vimrc_indent_loaded')
   finish
 endif

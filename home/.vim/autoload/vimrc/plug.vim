@@ -11,7 +11,7 @@ function! vimrc#plug#Load(source_file) abort
     " Load plugins
     call plug#begin()
     if filereadable(expand(a:source_file))
-      execute "source " . expand(a:source_file)
+      execute 'source ' . expand(a:source_file)
     endif
     call plug#end()
 
