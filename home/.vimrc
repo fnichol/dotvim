@@ -93,9 +93,6 @@ map <leader>d :NERDTreeToggle<cr>
 " Strip trailing whitespace on lines
 map <leader>ws :%s/ *$//g<cr><c-o><cr>
 
-" Format XML
-nmap <leader>xml :%!xmllint --format -<cr>
-
 " Wrap selected lines to 75 char width
 nmap <leader>wl :!fmt -w 75<cr>
 
