@@ -36,7 +36,7 @@ endif
 
 " Use `coc.nvim` if Vim version support it and if `node` is installed
 if v:version > 800 && executable('node')
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+  Plug 'neoclide/coc.nvim', { 'commit': '244b439' }
 else
   let s:msg = 'Node not found on system or Vim is too old. '
   let s:msg .= 'Please ensure pre-requisites are met and re-launch Vim.'
