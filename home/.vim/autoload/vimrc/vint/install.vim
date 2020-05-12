@@ -1,13 +1,18 @@
 function! vimrc#vint#install#Install() abort
-  if !executable('pip')
+  if executable('pip3')
+    let l:pip = 'pip3'
+  elseif executable('pip')
+    let l:pip = 'pip'
+  else
     echohl ErrorMsg
     echo '[vint] ' .
-          \ 'pip not found which is required. Please install Python and retry.'
+          \ 'neither pip3 nor pip not found which is required. ' .
+          \ 'Please install Python and retry.'
     echohl None
     return 0
   endif
 
-  execute 'silent !pip install --user vim-vint'
+  execute 'silent !' . l:pip . ' install --user vim-vint'
 
   if v:shell_error == 0
     redraw!
