@@ -105,6 +105,7 @@ nnoremap <silent> <Space>k :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <Space>p :<C-u>CocListResume<CR>
 
+" vint: -ProhibitAutocmdWithNoGroup
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Add `:Format` command to format current buffer

@@ -1,4 +1,4 @@
-" vint: -ProhibitMissingScriptEncoding
+scriptencoding utf-8
 
 if exists('g:did_vimrc_indent_loaded')
   finish

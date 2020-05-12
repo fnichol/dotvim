@@ -12,6 +12,7 @@ set modelines=0                   " prevent possible exploits in modelines
 " remap leader key to comma
 let mapleader=','
 
+" vint: -ProhibitEncodingOptionAfterScriptEncoding
 set encoding=utf-8                " sets the character encoding used inside Vim
 scriptencoding utf-8
 
