@@ -47,5 +47,6 @@
   "diagnostic-languageserver.formatFiletypes": {
     "sh": "shfmt"
   },
+  "explorer.file.showHiddenFiles": true,
   "rust-analyzer.cargo.loadOutDirsFromCheck": true
 }
