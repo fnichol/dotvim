@@ -14,6 +14,10 @@ call vimrc#coc#Load('~/.vim/coc-extensions.vim')
 set nobackup
 set nowritebackup
 
+let g:coc_filetype_map = {
+      \ 'vimwiki': 'markdown',
+      \ }
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1] =~# '\s'
