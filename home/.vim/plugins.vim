@@ -21,6 +21,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'uarun/vim-protobuf'
 Plug 'pangloss/vim-javascript'
+Plug 'jparise/vim-graphql'
 Plug 'plasticboy/vim-markdown'
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 
