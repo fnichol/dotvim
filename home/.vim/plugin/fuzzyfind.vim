@@ -20,10 +20,10 @@ if executable('rg')
   " Configure ack.vim to use ripgrep. Note that we're searching hidden
   " directories, but not inside `.git`
   let g:ackprg = 'rg --vimgrep --no-heading --smart-case '
-  let g:ackprg .= "--no-ignore --hidden --follow -g '!.git/*'"
+  let g:ackprg .= "--hidden --follow -g '!.git/**'"
 
   " Set the grep program to use ripgrep
   " Thanks to: https://git.io/fjnOq
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case\
-        \ --no-ignore\ --hidden\ --follow\ -g\ '!.git/*'
+        \ --hidden\ --follow\ -g\ '!.git/**'
 endif
