@@ -50,5 +50,6 @@
   },
   "explorer.file.showHiddenFiles": true,
   "rust-analyzer.cargo.loadOutDirsFromCheck": true,
-  "rust-analyzer.procMacro.enable": true
+  "rust-analyzer.procMacro.enable": true,
+  "vetur.format.defaultFormatter.html": "prettier"
 }
