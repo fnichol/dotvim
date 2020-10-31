@@ -14,3 +14,8 @@ CocExtension 'coc-tsserver'
 CocExtension 'coc-vetur'
 CocExtension 'coc-vimlsp'
 CocExtension 'coc-yaml'
+
+" Use a PowerShell extention if `pwsh` is installed
+if executable('pwsh')
+  CocExtension 'coc-powershell'
+endif
