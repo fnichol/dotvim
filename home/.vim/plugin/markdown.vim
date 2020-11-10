@@ -1,4 +1,4 @@
-if exists('g:did_vimrc_markdown_loaded') || !exists('g:plugs["vim-markdown"]')
+if exists('g:did_vimrc_markdown_loaded') || !exists('g:plugs["vim-polyglot"]')
   finish
 endif
 let g:did_vimrc_markdown_loaded = 1

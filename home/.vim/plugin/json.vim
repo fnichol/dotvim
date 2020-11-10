@@ -1,4 +1,4 @@
-if exists('g:did_vimrc_json_loaded') || !exists('g:plugs["vim-json"]')
+if exists('g:did_vimrc_json_loaded') || !exists('g:plugs["vim-polyglot"]')
   finish
 endif
 let g:did_vimrc_json_loaded = 1
