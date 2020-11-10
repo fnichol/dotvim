@@ -24,6 +24,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'jparise/vim-graphql'
 Plug 'plasticboy/vim-markdown'
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+Plug 'posva/vim-vue'
 
 " Plugins that require specific, newer versions of vim
 if v:version > 704
