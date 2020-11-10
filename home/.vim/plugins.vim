@@ -28,6 +28,7 @@ Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 " Plugins that require specific, newer versions of vim
 if v:version > 704
   Plug 'fatih/vim-go'
+  Plug 'andymass/vim-matchup'
 endif
 
 " Plugins that require specific, newer versions of vim

@@ -191,9 +191,6 @@ endif
 " Insert the current date (i.e. `YYYY-MM-DD`) in insert and command modes
 noremap! <leader>d <C-R>=strftime('%F')<CR>
 
-" enable extended % matching for HTML, LaTeX, and many other languages
-runtime macros/matchit.vim
-
 " Clear the background color in Termite or a 256 color term to get transparent
 " background
 if &term ==? 'xterm-termite' || match(&term, '-256color$') != -1
