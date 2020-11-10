@@ -51,5 +51,12 @@
   "explorer.file.showHiddenFiles": true,
   "rust-analyzer.cargo.loadOutDirsFromCheck": true,
   "rust-analyzer.procMacro.enable": true,
-  "vetur.format.defaultFormatter.html": "prettier"
+  "eslint.autoFixOnSave": true,
+  "tsserver.formatOnType": false,
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  "vetur.format.defaultFormatter.ts": "prettier",
+  "vetur.format.enable": true,
+  "vetur.trace.server": "verbose",
+  "vetur.validation.template": false
 }
