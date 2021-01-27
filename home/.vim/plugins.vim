@@ -39,6 +39,11 @@ else
   nmap <leader>tc :ToggleCoc<CR>
 endif
 
+" Use `vimspector` if Vim version supports and if it is compiled with Python 3
+if v:version >= 802 && has('python3')
+  Plug 'puremourning/vimspector'
+endif
+
 " Use `fzf` if Vim version supports it and if `fzf` is installed
 if v:version >= 740 && executable('fzf')
   " The install script with `--bin` should detect the system installed program
