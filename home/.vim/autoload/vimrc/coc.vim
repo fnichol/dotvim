@@ -2,7 +2,8 @@
 " used to update via the command line
 function! vimrc#coc#UpdateSync() abort
   if exists('g:plugs["coc.nvim"]')
-    call coc#rpc#start_server()
+    call vimrc#coc#Load('~/.vim/coc-extensions.vim')
+    call vimrc#coc#start()
     CocInstall -sync
     CocUpdateSync
   endif
@@ -37,21 +38,29 @@ endfunction
 " Toggle code completion on and off
 function! vimrc#coc#ToggleCoc() abort
   if coc#client#is_running('coc')
-    call coc#rpc#stop()
-    if exists('g:vimrc_coc_stop_callbacks')
-      for func in g:vimrc_coc_stop_callbacks
-        execute 'call ' . func . '()'
-      endfo
-    endif
+    call vimrc#coc#stop()
     echo '[toggle] coc.nvim completion disabled (-)'
   else
-    call coc#rpc#start_server()
-    if exists('g:vimrc_coc_start_callbacks')
-      for func in g:vimrc_coc_start_callbacks
-        execute 'call ' . func . '()'
-      endfo
-    endif
+    call vimrc#coc#start()
     echo '[toggle] coc.nvim completion enabled (+)'
+  endif
+endfunction
+
+function! vimrc#coc#start() abort
+  call coc#rpc#start_server()
+  if exists('g:vimrc_coc_start_callbacks')
+    for func in g:vimrc_coc_start_callbacks
+      execute 'call ' . func . '()'
+    endfo
+  endif
+endfunction
+
+function! vimrc#coc#stop() abort
+  call coc#rpc#stop()
+  if exists('g:vimrc_coc_stop_callbacks')
+    for func in g:vimrc_coc_stop_callbacks
+      execute 'call ' . func . '()'
+    endfo
   endif
 endfunction
 
