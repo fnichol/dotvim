@@ -1,3 +1,13 @@
+" Install and update extensions in a synchronous/blocking way which can be
+" used to update via the command line
+function! vimrc#coc#UpdateSync() abort
+  if exists('g:plugs["coc.nvim"]')
+    call coc#rpc#start_server()
+    CocInstall -sync
+    CocUpdateSync
+  endif
+endfunction
+
 " Load list of coc.nvim extensions from a standaline file with a simple DSL
 " which mimics vim-plug
 function! vimrc#coc#Load(source_file) abort

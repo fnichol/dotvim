@@ -1,3 +1,9 @@
+function! vimrc#UpdateSync() abort
+  PlugUpgrade
+  PlugUpdate
+  call vimrc#coc#UpdateSync()
+endfunction
+
 function! vimrc#Var(buffer, variable_name) abort
   let l:full_name = vimrc#VarName(a:variable_name)
   let l:vars = getbufvar(str2nr(a:buffer), '', {})
