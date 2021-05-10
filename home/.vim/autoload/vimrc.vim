@@ -1,7 +1,7 @@
-function! vimrc#UpdateSync() abort
+function! vimrc#UpdateThenQuit() abort
   PlugUpgrade
   PlugUpdate
-  call vimrc#coc#UpdateSync()
+  call vimrc#coc#UpdateThenQuit()
 endfunction
 
 function! vimrc#Var(buffer, variable_name) abort

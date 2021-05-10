@@ -1,11 +1,20 @@
 " Install and update extensions in a synchronous/blocking way which can be
 " used to update via the command line
-function! vimrc#coc#UpdateSync() abort
+function! vimrc#coc#UpdateThenQuit() abort
   if exists('g:plugs["coc.nvim"]')
     call vimrc#coc#Load('~/.vim/coc-extensions.vim')
     call vimrc#coc#start()
-    CocInstall -sync
-    CocUpdateSync
+    " Thanks to: https://git.io/J3jJv
+    call CocActionAsync('updateExtensions', v:false,
+          \ function('vimrc#coc#UpdateThenQuitCallback'))
+  endif
+endfunction
+
+function! vimrc#coc#UpdateThenQuitCallback(err, ...) abort
+  if a:err
+    echo a:err
+  else
+    execute 'qall'
   endif
 endfunction
 
