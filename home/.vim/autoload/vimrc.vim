@@ -1,7 +1,11 @@
 function! vimrc#UpdateThenQuit() abort
   PlugUpgrade
   PlugUpdate
-  call vimrc#coc#UpdateThenQuit()
+  if exists('g:plugs["coc.nvim"]')
+    call vimrc#coc#UpdateThenQuit()
+  else
+    execute 'qall'
+  endif
 endfunction
 
 function! vimrc#Var(buffer, variable_name) abort
