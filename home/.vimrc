@@ -7,6 +7,8 @@ augroup END
 " vint: -ProhibitSetNoCompatible
 set nocompatible                  " don't make vim vi-compatible (better)
 
+set viminfofile=~/.vim/cache/viminfo  " override default location of ~/.viminfo
+
 set modelines=0                   " prevent possible exploits in modelines
 
 " remap leader key to comma
