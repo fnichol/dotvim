@@ -49,7 +49,7 @@
     "sh": "shfmt"
   },
   "explorer.file.showHiddenFiles": true,
-  "rust-analyzer.cargo.loadOutDirsFromCheck": true,
+  "rust-analyzer.cargo.runBuildScripts": true,
   "rust-analyzer.procMacro.enable": true,
   "eslint.autoFixOnSave": true,
   "tsserver.formatOnType": false,
