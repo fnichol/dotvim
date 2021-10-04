@@ -84,10 +84,8 @@ nmap <leader>f <Plug>(coc-format-selected)
 
 " Apply `codeAction` to the selected region
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a <Plug>(coc-codeaction-selected)
-nmap <leader>a <Plug>(coc-codeaction-selected)
-" Remap keys for applying `codeAction` to the current line
-nmap <leader>ac <Plug>(coc-codeaction)
+xmap <leader>a <Plug>(coc-codeaction-cursor)
+nmap <leader>a <Plug>(coc-codeaction-cursor)
 
 " Apply AutoFix to problem on current line
 nmap <leader>qf <Plug>(coc-fix-current)
