@@ -4,6 +4,7 @@ Plug 'mileszs/ack.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-git'
@@ -15,6 +16,7 @@ Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+Plug 'kristijanhusak/vim-dadbod-ui'
 
 " Plugins that require specific, newer versions of vim
 if v:version > 704

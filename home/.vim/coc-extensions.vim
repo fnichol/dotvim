@@ -1,4 +1,5 @@
 CocExtension 'coc-css'
+CocExtension 'coc-db'
 CocExtension 'coc-diagnostic'
 CocExtension 'coc-eslint'
 CocExtension 'coc-explorer'
