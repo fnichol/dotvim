@@ -87,6 +87,9 @@ nmap <leader>f <Plug>(coc-format-selected)
 xmap <leader>a <Plug>(coc-codeaction-cursor)
 nmap <leader>a <Plug>(coc-codeaction-cursor)
 
+" Do command from codeLens of current line
+nmap <leader>c <Plug>(coc-codelens-action)
+
 " Apply AutoFix to problem on current line
 nmap <leader>qf <Plug>(coc-fix-current)
 
