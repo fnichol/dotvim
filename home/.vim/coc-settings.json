@@ -56,11 +56,5 @@
   "rust-analyzer.debug.runtime": "vimspector",
   "rust-analyzer.debug.vimspector.configuration.name": "launch",
   "eslint.autoFixOnSave": true,
-  "tsserver.formatOnType": false,
-  "vetur.format.defaultFormatter.html": "prettier",
-  "vetur.format.defaultFormatter.js": "prettier-eslint",
-  "vetur.format.defaultFormatter.ts": "prettier",
-  "vetur.format.enable": true,
-  "vetur.trace.server": "verbose",
-  "vetur.validation.template": false
+  "tsserver.formatOnType": false
 }
