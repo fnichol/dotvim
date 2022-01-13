@@ -53,6 +53,8 @@
   "rust-analyzer.checkOnSave.command": "clippy",
   "rust-analyzer.cargo.runBuildScripts": true,
   "rust-analyzer.procMacro.enable": true,
+  "rust-analyzer.debug.runtime": "vimspector",
+  "rust-analyzer.debug.vimspector.configuration.name": "launch",
   "eslint.autoFixOnSave": true,
   "tsserver.formatOnType": false,
   "vetur.format.defaultFormatter.html": "prettier",
